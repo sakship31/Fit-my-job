@@ -34,8 +34,25 @@ const userSchema=new mongoose.Schema({
     }],
     pic:{
         type:String,
-        default:"https://drgsearch.com/wp-content/uploads/2020/01/no-photo.png" },
+        default:"https://drgsearch.com/wp-content/uploads/2020/01/no-photo.png" 
+    },
     connections:[{type:ObjectId,ref:"User"}],
+    skills:[{
+        skill:{
+            name:{
+                required:true,
+                type:String,
+            },
+            project_url:{
+                type:String
+            }
+        }
+    }],
+    location:{
+        required:true,
+        type:String
+    },
+
 })
 
 userSchema.pre('save',async function(next){
@@ -65,7 +82,7 @@ userSchema.methods.generatetoken= async function(){
     const user=this
     const token=jwt.sign({_id:user._id.toString()},JWT_SECRET)
     user.tokens=user.tokens.concat({token})
-    await user.save()
+    user.save()
     return token
 }
 
