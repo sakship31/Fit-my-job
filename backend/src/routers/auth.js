@@ -8,19 +8,23 @@ const app = new express.Router()
 
 
 app.post('/signup',(req,res)=>{
+    // console.log("body-",req.body)
     const user=new User(req.body)
+    // console.log("user=",user)
     if(!user.email || !user.password || !user.name){
-        return res.status(422).send({error:"Please add all the fields"})
+        return res.status(422).send({message:"Please add all the fields"})
      }
 
         User.findOne({email:user.email})
         .then(async (savedUser)=>{
             if(savedUser){
-              return res.status(422).json({error:"User already exists with that email"})
+              return res.status(422).json({message:"User already exists with that email"})
             }
+        // console.log("lol")    
         await user.save()
-        res.send({user})
+        res.json({user})
     }).catch(error=>{
+        // console.log("error")
         res.status(400)
         res.send(error)
     })
@@ -34,12 +38,26 @@ app.post('/login',async(req,res)=>{
          try{
             const user =await User.findCredential(req.body.email,req.body.password)
             const token=await user.generatetoken()
-            res.send({user,token})
+            res.json({user,token})
          }
         catch(error){
             res.status(404).send()
         }
      }
+})
+
+app.get('/users',async (req,res)=>{
+    try{
+        const user=await User.find({},function(err,data){
+            if (err) throw error;
+            console.log(data);
+           
+        })
+           res.send(user)
+       }catch(e){
+           return res.status(500).send(e)
+       }
+    
 })
 
 app.post('/logout',login_required,async (req,res)=>{

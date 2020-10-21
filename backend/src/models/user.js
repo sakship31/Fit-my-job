@@ -40,7 +40,7 @@ const userSchema=new mongoose.Schema({
     skills:[{
         skill:{
             name:{
-                required:true,
+                // required:true,
                 type:String,
             },
             project_url:{
@@ -49,7 +49,7 @@ const userSchema=new mongoose.Schema({
         }
     }],
     location:{
-        required:true,
+        // required:true,
         type:String
     },
 
@@ -92,7 +92,6 @@ userSchema.methods.toJSON = function(){
     const userObj=user.toObject()
 
     delete userObj.password
-    delete userObj.tokens
 
     return userObj
 }
