@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 // import { NgFlashMessagesModule } from 'ng-flash-messages';
@@ -11,13 +11,15 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import {ValidateService} from './services/validate.service';
-import {AuthService} from './services/auth.service';
+import { ValidateService } from './services/validate.service';
+import { AuthService } from './services/auth.service';
+import { CreatepostComponent } from './components/createpost/createpost.component';
 
-const appRoutes: Routes =  [
-  {path:'register', component: RegisterComponent},
-  {path:'login', component: LoginComponent},
-  {path:'profile', component: ProfileComponent}
+const appRoutes: Routes = [
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'profile', component: ProfileComponent },
+  { path: 'createPost', component: CreatepostComponent }
 ]
 
 @NgModule({
@@ -26,7 +28,8 @@ const appRoutes: Routes =  [
     NavbarComponent,
     LoginComponent,
     RegisterComponent,
-    ProfileComponent
+    ProfileComponent,
+    CreatepostComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,7 @@ const appRoutes: Routes =  [
     HttpClientModule,
     // NgFlashMessagesModule.forRoot(),
   ],
-  providers: [ValidateService,AuthService,HttpClientModule],
+  providers: [ValidateService, AuthService, HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
