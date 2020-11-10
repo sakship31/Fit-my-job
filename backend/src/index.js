@@ -10,6 +10,10 @@ const UserprofileRouter=require('./routers/user_profile')
 const port =process.env.PORT || 3000
 
 app.use(corS())
+// app.use((req, res, next) => {
+//     res.header('Access-Control-Allow-Origin', '*');
+//     next();
+//   });
 app.use(authRouter)
 app.use(postRouter)
 app.use(UserprofileRouter)

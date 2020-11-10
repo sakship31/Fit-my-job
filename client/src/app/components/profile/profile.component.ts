@@ -19,9 +19,9 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    localStorage.getItem('id_token') ? this.router.navigate(['/profile']) : this.router.navigate(['/login']);
+    localStorage.getItem('id_token') ? this.router.navigate(['/profile/'+JSON.parse(localStorage.getItem('user'))._id]) : this.router.navigate(['/login']);
     let user = localStorage.getItem('user')
-
+    console.log(JSON.parse(user))
     this.authService.getProfile(JSON.parse(user)).subscribe(
       (res) => {
         console.log(res)

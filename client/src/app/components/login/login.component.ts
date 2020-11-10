@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
         console.log(res.user)
         // console.log(res)
         this.authService.storeUserData(res.token, res.user);
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/profile/'+res.user[0]._id]);
       }, (error) => {
         console.log(error)
         this.router.navigate(['/login']);

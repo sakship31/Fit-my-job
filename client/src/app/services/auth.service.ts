@@ -31,15 +31,6 @@ export class AuthService {
       )
   }
 
-  // authenticateUser(user){
-  //   let headers = new HttpHeaders({
-  //     'Content-Type': 'application/json',});
-  // let options = { headers: headers };
-  // console.log(options)
-
-  //   return this.http.post('http://localhost:3000/login', user,options).pipe(res=>res)
-  // }
-
   authenticateUser(data): Observable<any> {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',

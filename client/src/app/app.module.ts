@@ -18,7 +18,7 @@ import { CreatepostComponent } from './components/createpost/createpost.componen
 const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile/:id', component: ProfileComponent },
   { path: 'createPost', component: CreatepostComponent }
 ]
 

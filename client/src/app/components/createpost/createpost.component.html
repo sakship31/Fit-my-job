@@ -1,1 +1,39 @@
-<p>createpost works!</p>
+<!-- <p>createpost works!</p>
+<div className="card input-field update">
+    <input 
+    type="text"
+     placeholder="caption"
+     onChange={(e)=>setCaption(e.target.value)}
+     />
+    <div className="file-field input-field">
+     <div className="btn #64b5f6 blue darken-1">
+         <span>Uplaod Image</span>
+         <input type="file" onChange={(e)=>setImage(e.target.files[0])} />
+     </div>
+     <div className="file-path-wrapper">
+         <input className="file-path validate" type="text" />
+     </div>
+     </div>
+     <button className="btn waves-effect waves-light #64b5f6 blue darken-1"
+     onClick={()=>postDetails()}
+     >
+         Submit post
+     </button>
+
+</div> -->
+<h2 class="page-header">Create post</h2>
+<form (submit)="onCreatePost()">
+  <div class="form-group">
+    <label>Caption</label>
+    <input type="text" class="form-control" [(ngModel)]="caption" name="caption">
+  </div>
+  <!-- <div class="form-group">
+    <label>Password</label>
+    <input type="password" class="form-control" [(ngModel)]="password" name="password">
+  </div> -->
+  <div className="btn #64b5f6 blue darken-1">
+   <span>Upload Image</span>
+   <input type="file" (change)="onFileSelected($event)" class="form-control" name="image"/>
+</div>
+  <input type="submit" class="btn btn-primary" value="Post">
+</form>
