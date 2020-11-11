@@ -14,12 +14,16 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { ValidateService } from './services/validate.service';
 import { AuthService } from './services/auth.service';
 import { CreatepostComponent } from './components/createpost/createpost.component';
+import { HomeComponent } from './components/home/home.component';
+import { UpdatepicComponent } from './components/updatepic/updatepic.component';
 
 const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'profile/:id', component: ProfileComponent },
-  { path: 'createPost', component: CreatepostComponent }
+  { path: 'home', component: HomeComponent },
+  { path: 'createPost', component: CreatepostComponent },
+  { path: 'updatePic', component: UpdatepicComponent },
 ]
 
 @NgModule({
@@ -29,7 +33,9 @@ const appRoutes: Routes = [
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    CreatepostComponent
+    CreatepostComponent,
+    HomeComponent,
+    UpdatepicComponent
   ],
   imports: [
     BrowserModule,

@@ -17,7 +17,9 @@
     <li style="list-style-type:none;margin-left: 20px;" *ngIf="authService.loggedIn()"><a
         [routerLink]="['/createPost']">Create Post</a></li>
     <li style="list-style-type:none;margin-left: 20px;" *ngIf="authService.loggedIn()"><a
-        [routerLink]="['/profile']">Profile</a></li>
+          [routerLink]="['/home']">Home</a></li>
+    <li style="list-style-type:none;margin-left: 20px;" *ngIf="authService.loggedIn()"><a
+        [routerLink]="['/profile/:id']">Profile</a></li>
     <li style="list-style-type:none;margin-left: 20px;" *ngIf="authService.loggedIn()"><a (click)="onLogoutClick()"
         href="#">Logout</a></li>
   </div>

@@ -31,6 +31,23 @@ export class ValidateService {
       catchError(this.errorMgmt)
     )
 }
+
+  //update profile picture 
+  updatePic(data): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('id_token'),   
+    });
+    let options = { headers: headers };
+    console.log("data:",data)
+    // console.log(data.image.get("image"))
+    let url = 'http://localhost:3000/updatepic';
+    return this.http.post(url, data, options)
+      .pipe(
+        catchError(this.errorMgmt)
+      )
+  }
+
   // Error handling 
   errorMgmt(error: HttpErrorResponse) {
     let errorMessage = '';

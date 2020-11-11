@@ -2,6 +2,9 @@
 connections=={{connections.length}}
 posts=={{posts.length}}
 <div>
-   <img src="{{image}}" style="width:120px;height:120px;border-radius: 50%;" />
-
+   <img src="{{profile}}" style="width:120px;height:120px;border-radius: 50%;" />
+   <button style="margin-left: 30px;" (change)="onFileSelected($event)">
+      <a
+   [routerLink]="['/updatePic']"> Update Profile Picture</a>
+   </button>
 </div>

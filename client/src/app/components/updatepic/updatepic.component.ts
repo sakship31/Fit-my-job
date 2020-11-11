@@ -1,37 +1,36 @@
+
 declare var require: any
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 import axios from 'axios';
+import { Router } from '@angular/router';
 import {ValidateService} from '../../services/validate.service';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 const {URL,UPLOAD_PRESET,CLOUD_NAME}=require('../../config/keys') 
+
 @Component({
-  selector: 'app-createpost',
-  templateUrl: './createpost.component.html',
-  styleUrls: ['./createpost.component.css']
+  selector: 'app-updatepic',
+  templateUrl: './updatepic.component.html',
+  styleUrls: ['./updatepic.component.css']
 })
-export class CreatepostComponent implements OnInit {
+export class UpdatepicComponent implements OnInit {
 
-  caption="";
-  pic="";
-  image:File=null;
-
+  image:File=null
+  pic=""
   constructor(
     private validateService:ValidateService,
     private router: Router,
-    private http: HttpClient
   ) { }
 
   ngOnInit(): void {
-    localStorage.getItem('id_token') ? this.router.navigate(['/createPost']) : this.router.navigate(['/login']);
   }
-  
+
   onFileSelected(event){
     this.image=<File>event.target.files[0]
     console.log("dsjskj==",(this.image))
   }
 
-  onCreatePost(){
+  onUpdatePic(){
     
       const data = new FormData()
       data.append("file",this.image)
@@ -43,15 +42,14 @@ export class CreatepostComponent implements OnInit {
           console.log(data.data.url)
           this.pic=data.data.url
           const post={
-            caption:this.caption,
             pic:this.pic
           }
-          this.validateService.createPost(post).subscribe(
+          this.validateService.updatePic(post).subscribe(
             (res) => {
               console.log(res)
               // console.log(res)
               // this.authService.storeUserData(res.token, res.user);
-              this.router.navigate(['/profile/'+res.postedBy._id]);
+              this.router.navigate(['/profile/'+res._id]);
             }, (error) => {
               console.log(error)
               this.router.navigate(['/login']);
