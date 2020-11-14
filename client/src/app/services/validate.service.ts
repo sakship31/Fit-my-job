@@ -48,6 +48,54 @@ export class ValidateService {
       )
   }
 
+  //Add skill
+  addSkill(data): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('id_token'),   
+    });
+    let options = { headers: headers };
+    console.log("data:",data)
+    // console.log(data.image.get("image"))
+    let url = 'http://localhost:3000/addSkill/'+JSON.parse(localStorage.getItem('user'))._id;
+    return this.http.post(url, data, options)
+      .pipe(
+        catchError(this.errorMgmt)
+      )
+  }
+
+   //connect
+   connect(data): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('id_token'),   
+    });
+    let options = { headers: headers };
+    console.log("data:",data)
+    // console.log(data.image.get("image"))
+    let url = 'http://localhost:3000/connect';
+    return this.http.post(url, data, options)
+      .pipe(
+        catchError(this.errorMgmt)
+      )
+  }
+  
+    //remove
+    remove(data): Observable<any> {
+      let headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('id_token'),   
+      });
+      let options = { headers: headers };
+      console.log("data:",data)
+      // console.log(data.image.get("image"))
+      let url = 'http://localhost:3000/remove';
+      return this.http.post(url, data, options)
+        .pipe(
+          catchError(this.errorMgmt)
+        )
+    }
+
   // Error handling 
   errorMgmt(error: HttpErrorResponse) {
     let errorMessage = '';

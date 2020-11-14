@@ -111,9 +111,10 @@ app.post('/createpost/article', login_required, async (req, res) => {
 
 //posts by logged in user's connections
 app.get('/networkposts', login_required, (req, res) => {
+    //console.log("CONNECTIONS=",req.user.connections)
     // if postedBy in connections of the requested user
-    // Post.find({postedBy:{$in:req.user.connections}})
-    Post.find({ $and: [{ postedBy: { $in: req.user.connections } }, { postedBy: req.user._id }] })
+    Post.find({postedBy:{$in:req.user.connections}})
+    // Post.find({ $and: [{ postedBy: { $in: req.user.connections } }, { postedBy: req.user._id }] })
         .populate("postedBy", "_id name pic")
         .populate("comments.postedBy", "_id name pic")
         .sort('-createdAt')
@@ -125,7 +126,7 @@ app.get('/networkposts', login_required, (req, res) => {
         })
 })
 
-app.put('/like', login_required, (req, res) => {
+app.post('/like', login_required, (req, res) => {
     Post.findByIdAndUpdate(req.body.postId, {
         $push: { likes: req.user._id }
     }, {
@@ -142,7 +143,7 @@ app.put('/like', login_required, (req, res) => {
         })
 })
 
-app.put('/unlike', login_required, (req, res) => {
+app.post('/unlike', login_required, (req, res) => {
     Post.findByIdAndUpdate(req.body.postId, {
         $pull: { likes: req.user._id }
     }, {
@@ -159,7 +160,7 @@ app.put('/unlike', login_required, (req, res) => {
         })
 })
 
-app.put('/comment', login_required, (req, res) => {
+app.post('/comment', login_required, (req, res) => {
     const comment = {
         text: req.body.text,
         postedBy: req.user._id

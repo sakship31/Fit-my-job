@@ -16,6 +16,7 @@ import { AuthService } from './services/auth.service';
 import { CreatepostComponent } from './components/createpost/createpost.component';
 import { HomeComponent } from './components/home/home.component';
 import { UpdatepicComponent } from './components/updatepic/updatepic.component';
+import { AddskillComponent } from './components/addskill/addskill.component';
 
 const appRoutes: Routes = [
   { path: 'register', component: RegisterComponent },
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'createPost', component: CreatepostComponent },
   { path: 'updatePic', component: UpdatepicComponent },
+  { path: 'addSkill/:id', component: AddskillComponent },
 ]
 
 @NgModule({
@@ -35,7 +37,8 @@ const appRoutes: Routes = [
     ProfileComponent,
     CreatepostComponent,
     HomeComponent,
-    UpdatepicComponent
+    UpdatepicComponent,
+    AddskillComponent
   ],
   imports: [
     BrowserModule,

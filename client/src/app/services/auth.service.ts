@@ -51,12 +51,55 @@ export class AuthService {
     });
     let options = { headers: headers };
     // console.log("data--",data._id,data.name)
-    let url = 'http://localhost:3000/profile/'+data._id;
+    let url = 'http://localhost:3000/profile/'+data;
     return this.http.get(url, options)
       .pipe(
         catchError(this.errorMgmt)
       )
   }
+
+  getNetworkPost(): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('id_token'),
+    });
+    let options = { headers: headers };
+    // console.log("data--",data._id,data.name)
+    let url = 'http://localhost:3000/networkposts';
+    return this.http.get(url, options)
+      .pipe(
+        catchError(this.errorMgmt)
+      )
+  } 
+
+  like(data): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('id_token'),
+    });
+    let options = { headers: headers };
+    // console.log("data--",data._id,data.name)
+    let url = 'http://localhost:3000/like';
+    return this.http.post(url,data,options)
+      .pipe(
+        catchError(this.errorMgmt)
+      )
+  } 
+
+  
+  unlike(data): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('id_token'),
+    });
+    let options = { headers: headers };
+    // console.log("data--",data._id,data.name)
+    let url = 'http://localhost:3000/unlike';
+    return this.http.post(url,data,options)
+      .pipe(
+        catchError(this.errorMgmt)
+      )
+  } 
 
   storeUserData(token, user) {
     localStorage.setItem('id_token', token);

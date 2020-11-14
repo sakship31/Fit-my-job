@@ -16,6 +16,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  id=JSON.parse(localStorage.getItem('user'))._id
   onLogoutClick() {
     this.authService.logout();
     // this.flashMessage.show('You are logged out', {

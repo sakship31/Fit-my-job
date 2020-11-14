@@ -4,10 +4,11 @@ const User=require('../models/user')
 const multer=require('multer')
 const sharp=require('sharp')
 const login_required=require('../middleware/login_required')
+const { findById } = require('../models/post')
 
 const app = new express.Router()
 
-app.put('/connect',login_required,(req,res)=>{
+app.post('/connect',login_required,(req,res)=>{
     User.findByIdAndUpdate(req.body.followId,{
         $push:{connections:req.user._id}
     },{
@@ -16,19 +17,23 @@ app.put('/connect',login_required,(req,res)=>{
         if(err){
             return res.status(422).json({error:err})
         }
+        console.log("doneee")
       User.findByIdAndUpdate(req.user._id,{
           $push:{connections:req.body.followId}
           
-      },{new:true}).then(result=>{
+      },{new:true}
+      ,(err,result)=>{
+          if(err){
+              return res.status(422).json({error:err})
+          }
+          console.log("donee222")
           res.send(result)
-      }).catch(err=>{
-          return res.status(422).send(err)
       })
-
     }
     )
 })
-app.put('/remove',login_required,(req,res)=>{
+app.post('/remove',login_required,(req,res)=>{
+    console.log("hey remove")
     User.findByIdAndUpdate(req.body.unfollowId,{
         $pull:{connections:req.user._id}
     },{
@@ -40,12 +45,14 @@ app.put('/remove',login_required,(req,res)=>{
       User.findByIdAndUpdate(req.user._id,{
           $pull:{connections:req.body.unfollowId}
           
-      },{new:true}).then(result=>{
-          res.json(result)
-      }).catch(err=>{
-          return res.status(422).send(err)
+      },{new:true}
+      ,(err,result)=>{
+          if(err){
+            return res.status(422).send(err)
+          }
+          console.log("lala")
+          res.send(result)
       })
-
     }
     )
 })
@@ -61,40 +68,28 @@ app.post('/updatepic',login_required,async (req,res)=>{
 
 })
 
-// const upload=multer({
-//     limits:{
-//         fileSize: 1000000
-//     },
-//     fileFilter(req,file,cb){
-//         if(!file.originalname.match(/\.(PNG|jpg|jpeg)$/)){
-//             return cb(new Error('Please upload an image'))
-//         }
-//         cb(undefined,true)
-//     }
-// })
+app.post('/addSkill/:id', login_required, (req, res) => {
+    const name=req.body.name
+    const project_url=req.body.project_url
+    const skill={name,project_url}
+    User.findByIdAndUpdate(req.params.id, {
+        $push: { skills: {skill} }
+    }, {
+        new: true
+    })
+        // .populate("comments.postedBy", "_id name pic")
+        // .populate("postedBy", "_id name pic")
+        .exec((err, result) => {
+            if (err) {
+                return res.status(422).send(err)
+            } else {
+                res.send(result)
+                // console.log("skill:",skill)
+                // console.log("user:",res)
+            }
+        })
+})
 
-// app.post('/updatepic',login_required,upload.single('pic'),async (req,res)=>{
-//     req.user.pic=await sharp(req.file.buffer).resize({width:250,height:250}).png().toBuffer()
-//     await req.user.save()
-//     res.send("okay")
-// },
-//     // User.findByIdAndUpdate(req.user._id,{$set:{pic:req.user.pic}},{new:true},
-//         (err,result)=>{
-//          if(err){
-//              return res.status(422).send({error:"pic cannot be updated"})
-//          }
-//     })
-
-
-
-
-// app.post('/users/me/profile',upload.single('avatar'),async(req,res)=>{
-//     req.user.avatar=await sharp(req.file.buffer).resize({width:250,height:250}).png().toBuffer()
-//     await req.user.save()
-//     res.send()
-// },(error,req,res,next)=>{
-//     res.status(400).send({error:error.message})
-// })
 
 app.post('/search',(req,res)=>{
     let userPattern = new RegExp("^"+req.body.query)
