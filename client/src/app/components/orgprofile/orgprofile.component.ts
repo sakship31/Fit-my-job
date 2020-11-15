@@ -8,21 +8,25 @@ import { ActivatedRoute } from '@angular/router';
 //import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  selector: 'app-orgprofile',
+  templateUrl: './orgprofile.component.html',
+  styleUrls: ['./orgprofile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class OrgprofileComponent implements OnInit {
 
+ 
   profile = "";
   name = "";
   id="";
-  location="";
-  email=""
+  about="";
+  website_link=""
+  location=""
   userid=JSON.parse(localStorage.getItem('user'))._id;
   posts = [];
+  followers=[]
   connections = [];
   skills=[];
+  jobs=[]
   constructor(
     private authService: AuthService,
     private validateService:ValidateService,
@@ -32,18 +36,21 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     localStorage.getItem('id_token') ? console.log("") : this.router.navigate(['/login']);
-    console.log("okayyy=",this.userid)
-      this.authService.getProfile(this.activatedRoute.snapshot.params.id).subscribe(
+    console.log(this.userid)
+    console.log("check=",this.authService.isTypeOrg)
+      this.authService.getOrgProfile(this.activatedRoute.snapshot.params.id).subscribe(
         (res) => {
           console.log("HEY",res)
-          this.id=res.user[0]._id._id;
-          this.name = res.user[0].name;
-          this.profile = res.user[0].pic;
-          this.connections = res.user[0].connections;
-          this.skills=res.user[0].skills;
-          this.posts = res.posts;
-          this.location=res.user[0].location
-          this.email=res.user[0].email
+          this.id=res.org[0]._id._id;
+          this.name = res.org[0].name;
+          this.profile = res.org[0].pic;
+          this.followers = res.org[0].followers;
+          this.website_link=res.org[0].website_link;
+          this.location=res.org[0].location;
+          this.about=res.org[0].about;
+          // this.skills=res.user[0].skills;
+          this.jobs = res.jobs;
+          console.log("profile=",this.profile)
           
         }, (error) => {
           console.log(error)
@@ -62,8 +69,8 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['/addSkill/'+JSON.parse(localStorage.getItem('user'))._id])
   }
 
-  onUpdatePic(){
-    this.router.navigate(['/updatePic/'])
+  onUpdateProfile(){
+    this.router.navigate(['/updateProfile'])
   }
   
   self(){
@@ -110,6 +117,5 @@ export class ProfileComponent implements OnInit {
       }
       );
 }
-
 
 }

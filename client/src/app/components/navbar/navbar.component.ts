@@ -15,15 +15,18 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
   }
-  id=JSON.parse(localStorage.getItem('user'))._id
+
+
+
+  getId(){
+      return JSON.parse(localStorage.getItem('user'))._id
+  }
+  
   onLogoutClick() {
     this.authService.logout();
-    // this.flashMessage.show('You are logged out', {
-    //   cssClass:'alert-success',
-    //   timeout: 3000
-    // });
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
     return false;
   }
 

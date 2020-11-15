@@ -48,6 +48,17 @@ const userSchema=new mongoose.Schema({
             }
         }
     }],
+    education:[{
+        study:{
+            study:{
+                // required:true,
+                type:String,
+            },
+            uni_name:{
+                type:String
+            }
+        }
+    }],
     location:{
         // required:true,
         type:String

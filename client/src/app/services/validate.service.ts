@@ -33,7 +33,7 @@ export class ValidateService {
 }
 
   //update profile picture 
-  updatePic(data): Observable<any> {
+  updatePic(data,isOrg): Observable<any> {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': localStorage.getItem('id_token'),   
@@ -41,11 +41,21 @@ export class ValidateService {
     let options = { headers: headers };
     console.log("data:",data)
     // console.log(data.image.get("image"))
-    let url = 'http://localhost:3000/updatepic';
-    return this.http.post(url, data, options)
-      .pipe(
-        catchError(this.errorMgmt)
-      )
+    if(!isOrg){
+      let url = 'http://localhost:3000/updatepic';
+      return this.http.post(url, data, options)
+        .pipe(
+          catchError(this.errorMgmt)
+        )
+    }
+    else{
+      let url = 'http://localhost:3000/updateprofilepic';
+      return this.http.post(url, data, options)
+        .pipe(
+          catchError(this.errorMgmt)
+        )
+    }
+   
   }
 
   //Add skill
@@ -90,6 +100,22 @@ export class ValidateService {
       console.log("data:",data)
       // console.log(data.image.get("image"))
       let url = 'http://localhost:3000/remove';
+      return this.http.post(url, data, options)
+        .pipe(
+          catchError(this.errorMgmt)
+        )
+    }
+
+    //update organisation profile
+    updateOrgProfile(data): Observable<any> {
+      let headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('id_token'),   
+      });
+      let options = { headers: headers };
+      console.log("data:",data)
+      // console.log(data.image.get("image"))
+      let url = 'http://localhost:3000/updateprofile';
       return this.http.post(url, data, options)
         .pipe(
           catchError(this.errorMgmt)

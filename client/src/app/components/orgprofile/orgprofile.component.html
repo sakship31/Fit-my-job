@@ -1,0 +1,19 @@
+<p>orgprofile works!</p>
+<div><p>Organisation profile works! <br>{{name}}</p>
+   followers=={{followers.length}}
+   jobs=={{jobs.length}}
+   <div>
+      <img src="{{profile}}" style="width:120px;height:120px;border-radius: 50%;" />
+      <button style="margin-left: 30px;" (click)="onUpdateProfile()" *ngIf="self()">
+         Update Profile
+      </button>
+      <button style="margin-left: 30px;" (click)="Connect()" *ngIf="(!self())">
+         Follow
+      </button>
+    {{about}}
+    {{location}}
+    {{website_link}}
+   </div>
+   <br>
+   </div>
+   

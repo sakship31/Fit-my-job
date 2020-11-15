@@ -17,11 +17,17 @@ import { CreatepostComponent } from './components/createpost/createpost.componen
 import { HomeComponent } from './components/home/home.component';
 import { UpdatepicComponent } from './components/updatepic/updatepic.component';
 import { AddskillComponent } from './components/addskill/addskill.component';
+import { ChooseComponent } from './components/choose/choose.component';
+import { OrgprofileComponent } from './components/orgprofile/orgprofile.component';
+import { UpdateprofileComponent } from './components/updateprofile/updateprofile.component';
 
 const appRoutes: Routes = [
+  { path: '', component: ChooseComponent },
+  { path: 'updateProfile', component: UpdateprofileComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'profile/:id', component: ProfileComponent },
+  { path: 'profile/org/:id', component: OrgprofileComponent },
   { path: 'home', component: HomeComponent },
   { path: 'createPost', component: CreatepostComponent },
   { path: 'updatePic', component: UpdatepicComponent },
@@ -38,7 +44,10 @@ const appRoutes: Routes = [
     CreatepostComponent,
     HomeComponent,
     UpdatepicComponent,
-    AddskillComponent
+    AddskillComponent,
+    ChooseComponent,
+    OrgprofileComponent,
+    UpdateprofileComponent
   ],
   imports: [
     BrowserModule,

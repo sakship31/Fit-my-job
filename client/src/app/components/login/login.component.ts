@@ -17,19 +17,32 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log("check--",typeof(localStorage.getItem('isOrg')))
+    console.log("check--",(localStorage.getItem('isOrg')))
   }
   onLoginSubmit(){
+    
     const user = {
       email: this.email,
       password: this.password
     }
-
+    // console.log(this.authService.isTypeOrg)
     this.authService.authenticateUser(user).subscribe(
       (res) => {
-        console.log(res.user)
-        // console.log(res)
-        this.authService.storeUserData(res.token, res.user);
-        this.router.navigate(['/profile/'+res.user._id]);
+        if(localStorage.getItem('isOrg')=="true"){
+          console.log(res.org)
+          // console.log(res)
+          this.authService.storeUserData(res.token, res.org,true);
+          this.router.navigate(['/profile/org/'+res.org._id]);
+        }
+        else{
+          console.log(res.user)
+          // console.log(res)
+          this.authService.storeUserData(res.token, res.user,false);
+          this.router.navigate(['/profile/'+res.user._id]);
+        
+        }
+
       }, (error) => {
         console.log(error)
         this.router.navigate(['/login']);

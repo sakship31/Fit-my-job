@@ -18,6 +18,7 @@ export class UpdatepicComponent implements OnInit {
   image:File=null
   pic=""
   constructor(
+    private authService: AuthService,
     private validateService:ValidateService,
     private router: Router,
   ) { }
@@ -44,12 +45,18 @@ export class UpdatepicComponent implements OnInit {
           const post={
             pic:this.pic
           }
-          this.validateService.updatePic(post).subscribe(
+          this.validateService.updatePic(post,this.authService.isOrg).subscribe(
             (res) => {
               console.log(res)
               // console.log(res)
               // this.authService.storeUserData(res.token, res.user);
-              this.router.navigate(['/profile/'+res._id]);
+              if(this.authService.isOrg){
+                this.router.navigate(['/profile/org/'+res._id]);
+              }
+              else{
+                this.router.navigate(['/profile/'+res._id]);
+              }
+            
             }, (error) => {
               console.log(error)
               this.router.navigate(['/login']);

@@ -9,15 +9,8 @@ export class AuthService {
 
   authToken: any;
   user: any;
+  isTypeOrg: Boolean;
   constructor(private http: HttpClient) { }
-
-  // registerUser(user) {
-  //   let headers = new HttpHeaders({
-  //     'Content-Type': 'application/json',});
-
-  // console.log(options)    
-  //   return this.http.post('http://localhost:3000/signup', user,options).pipe(data=>data)
-  //   // return this.http.get('http://localhost:3000/users')
   // }
   registerUser(data): Observable<any> {
     let headers = new HttpHeaders({
@@ -37,11 +30,21 @@ export class AuthService {
       // 'Authorization': localStorage.getItem('id_token'),   
     });
     let options = { headers: headers };
-    let url = 'http://localhost:3000/login';
-    return this.http.post(url, data, options)
-      .pipe(
-        catchError(this.errorMgmt)
-      )
+    if(localStorage.getItem('isOrg')=="false"){
+      let url = 'http://localhost:3000/login';
+      return this.http.post(url, data, options)
+        .pipe(
+          catchError(this.errorMgmt)
+        )
+    }
+    else{
+      let url = 'http://localhost:3000/login/org';
+      return this.http.post(url, data, options)
+        .pipe(
+          catchError(this.errorMgmt)
+        )
+    }
+
   }
 
   getProfile(data): Observable<any> {
@@ -52,6 +55,20 @@ export class AuthService {
     let options = { headers: headers };
     // console.log("data--",data._id,data.name)
     let url = 'http://localhost:3000/profile/'+data;
+    return this.http.get(url, options)
+      .pipe(
+        catchError(this.errorMgmt)
+      )
+  }
+
+  getOrgProfile(data): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('id_token'),
+    });
+    let options = { headers: headers };
+    // console.log("data--",data._id,data.name)
+    let url = 'http://localhost:3000/profile/org/'+data;
     return this.http.get(url, options)
       .pipe(
         catchError(this.errorMgmt)
@@ -101,11 +118,24 @@ export class AuthService {
       )
   } 
 
-  storeUserData(token, user) {
+  storeUserData(token, user,isOrg) {
     localStorage.setItem('id_token', token);
     localStorage.setItem('user', JSON.stringify(user));
+    // localStorage.setItem('isOrg',(isOrg));
     this.authToken = token;
     this.user = user;
+  }
+
+  isOrg(){
+    if(localStorage.getItem('isOrg')=="true"){
+      return true
+    }
+    else{
+      return false
+    }
+  }
+  isChosen(){
+    localStorage.getItem('isOrg')?true:false;
   }
 
   loggedIn() {
@@ -116,6 +146,7 @@ export class AuthService {
     this.authToken = null;
     this.user = null;
     localStorage.clear();
+    
   }
 
   // Error handling 
