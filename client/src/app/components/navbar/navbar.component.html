@@ -7,9 +7,9 @@
 
   <div class="collapse navbar-collapse">
     <!-- && authService.isChosen() -->
-    <li style="list-style-type:none;margin-left:900px;" *ngIf="!authService.loggedIn() "><a
+    <li style="list-style-type:none;margin-left:900px;" *ngIf="!authService.loggedIn() && authService.isChosen()"><a
         [routerLink]="['/login']">Login</a></li>
-    <li style="list-style-type:none;margin-left: 20px;" *ngIf="!authService.loggedIn()"><a
+    <li style="list-style-type:none;margin-left: 20px;" *ngIf="!authService.loggedIn() && authService.isChosen()"><a
         [routerLink]="['/register']">Register</a></li>
 
     <li style="list-style-type:none;margin-left: 20px;" *ngIf="authService.loggedIn() && !authService.isOrg()"><a

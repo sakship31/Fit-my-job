@@ -14,6 +14,7 @@ export class ChooseComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    localStorage.clear();
   }
   
   organisation(){

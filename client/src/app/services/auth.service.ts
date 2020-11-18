@@ -144,7 +144,7 @@ export class AuthService {
     }
   }
   isChosen(){
-    localStorage.getItem('isOrg')?true:false;
+    return localStorage.getItem('isOrg')?true:false;
   }
 
   loggedIn() {
