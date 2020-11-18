@@ -6,9 +6,10 @@
   </button>
 
   <div class="collapse navbar-collapse">
-    <li style="list-style-type:none;margin-left:900px;" *ngIf="!authService.loggedIn() && authService.isChosen()"><a
+    <!-- && authService.isChosen() -->
+    <li style="list-style-type:none;margin-left:900px;" *ngIf="!authService.loggedIn() "><a
         [routerLink]="['/login']">Login</a></li>
-    <li style="list-style-type:none;margin-left: 20px;" *ngIf="!authService.loggedIn() && authService.isChosen()"><a
+    <li style="list-style-type:none;margin-left: 20px;" *ngIf="!authService.loggedIn()"><a
         [routerLink]="['/register']">Register</a></li>
 
     <li style="list-style-type:none;margin-left: 20px;" *ngIf="authService.loggedIn() && !authService.isOrg()"><a

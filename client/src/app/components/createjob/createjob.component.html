@@ -1,0 +1,28 @@
+<p>createjob works!</p>
+<p>updateprofile works!</p>
+<h2 class="page-header">Create Job</h2>
+<!-- <button style="margin-left: 30px;" (click)="onUpdateProfilePic()">
+   Update Profile Picture
+</button> -->
+
+<form (submit)="createJob()">
+  <div class="form-group">
+    <label>Job title</label>
+    <input type="text" class="form-control" [(ngModel)]="job_title" name="job_title">
+  </div>
+  <div class="form-group">
+   <label>Job Description</label>
+   <input type="text" class="form-control" [(ngModel)]="job_description" name="job_description">
+ </div>
+ <div class="form-group">
+   <label>Skills</label>
+   <input type="text" class="form-control" [(ngModel)]="skills_required" name="skills_required">
+ </div>
+ <div class="form-group">
+   <label>Location</label>
+   <input type="text" class="form-control" [(ngModel)]="location" name="location">
+ </div>
+  <input type="submit" class="btn btn-primary" value="Create">
+</form>
+
+

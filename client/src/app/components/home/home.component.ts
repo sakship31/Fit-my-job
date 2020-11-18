@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
       (res) => {
         console.log("liked",res)
         post.likes.length++
-        // this.ngOnInit()
+        this.ngOnInit()
       }, (error) => {
         console.log(error)
       }
@@ -71,7 +71,7 @@ export class HomeComponent implements OnInit {
         console.log("unliked",res)
         post.likes.length--
         
-        // this.ngOnInit()
+        this.ngOnInit()
       }, (error) => {
         console.log(error)
       }

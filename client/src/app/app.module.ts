@@ -20,6 +20,7 @@ import { AddskillComponent } from './components/addskill/addskill.component';
 import { ChooseComponent } from './components/choose/choose.component';
 import { OrgprofileComponent } from './components/orgprofile/orgprofile.component';
 import { UpdateprofileComponent } from './components/updateprofile/updateprofile.component';
+import { CreatejobComponent } from './components/createjob/createjob.component';
 
 const appRoutes: Routes = [
   { path: '', component: ChooseComponent },
@@ -47,7 +48,8 @@ const appRoutes: Routes = [
     AddskillComponent,
     ChooseComponent,
     OrgprofileComponent,
-    UpdateprofileComponent
+    UpdateprofileComponent,
+    CreatejobComponent
   ],
   imports: [
     BrowserModule,

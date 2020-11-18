@@ -11,17 +11,26 @@ export class AuthService {
   user: any;
   isTypeOrg: Boolean;
   constructor(private http: HttpClient) { }
-  // }
   registerUser(data): Observable<any> {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
+      // 'Authorization': localStorage.getItem('id_token'),   
     });
     let options = { headers: headers };
-    let url = 'http://localhost:3000/signup';
-    return this.http.post(url, data, options)
-      .pipe(
-        catchError(this.errorMgmt)
-      )
+    if(localStorage.getItem('isOrg')=="false"){
+      let url = 'http://localhost:3000/signup';
+      return this.http.post(url, data, options)
+        .pipe(
+          catchError(this.errorMgmt)
+        )
+    }
+    else{
+      let url = 'http://localhost:3000/signup/org';
+      return this.http.post(url, data, options)
+        .pipe(
+          catchError(this.errorMgmt)
+        )
+    }
   }
 
   authenticateUser(data): Observable<any> {

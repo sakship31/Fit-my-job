@@ -1,20 +1,25 @@
 const mongoose = require('mongoose')
 const { ObjectId } = mongoose.Schema.Types
 const jobSchema = new mongoose.Schema({
-    caption: {
+    job_title: {
         type: String,
     },
-    pic: {
+    job_description: {
         type: String,
     },
-    article: {
+    skills_required: {
         type: String,
     },
-    likes: [{ type: ObjectId, ref: "User" }],
-    comments: [{
-        text: String,
-        postedBy: { type: ObjectId, ref: "User" }
+    location: {
+        type: String,
+    },
+    applicants: [{
+        type: ObjectId,
+         ref: "User" 
     }],
+    start_date:{
+        type:Date
+    },
     postedBy: {
         type: ObjectId,
         ref: "Org"
