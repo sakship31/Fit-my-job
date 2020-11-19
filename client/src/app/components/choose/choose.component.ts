@@ -28,7 +28,7 @@ export class ChooseComponent implements OnInit {
     localStorage.setItem('isOrg',(isOrg));
     this.router.navigate(['/login']);
   }
-  
+  myImage:String = "assets/images/work.gif";
 
 
 }
