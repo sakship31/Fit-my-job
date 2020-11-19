@@ -18,7 +18,13 @@ const jobSchema = new mongoose.Schema({
          ref: "User" 
     }],
     start_date:{
-        type:Date
+        type:String
+    },
+    end_date:{
+        type:String
+    },
+    apply_by:{
+        type:String
     },
     postedBy: {
         type: ObjectId,

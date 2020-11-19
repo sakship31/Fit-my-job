@@ -21,9 +21,12 @@ import { ChooseComponent } from './components/choose/choose.component';
 import { OrgprofileComponent } from './components/orgprofile/orgprofile.component';
 import { UpdateprofileComponent } from './components/updateprofile/updateprofile.component';
 import { CreatejobComponent } from './components/createjob/createjob.component';
+import { JoblistComponent } from './components/joblist/joblist.component';
+import { JobdetailComponent } from './components/jobdetail/jobdetail.component';
 
 const appRoutes: Routes = [
   { path: '', component: ChooseComponent },
+  { path: 'createjob', component: CreatejobComponent },
   { path: 'updateProfile', component: UpdateprofileComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
@@ -49,7 +52,9 @@ const appRoutes: Routes = [
     ChooseComponent,
     OrgprofileComponent,
     UpdateprofileComponent,
-    CreatejobComponent
+    CreatejobComponent,
+    JoblistComponent,
+    JobdetailComponent
   ],
   imports: [
     BrowserModule,

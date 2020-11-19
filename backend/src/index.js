@@ -8,6 +8,7 @@ const postRouter=require('./routers/posts')
 const UserprofileRouter=require('./routers/user_profile')
 const jobRouter=require('./routers/job_post')
 const OrgprofileRouter=require('./routers/org_profile')
+// const Router=require('./routers/job_post')
 
 const port =process.env.PORT || 3000
 
@@ -19,7 +20,7 @@ app.use(corS())
 app.use(authRouter)
 app.use(postRouter)
 app.use(UserprofileRouter)
-// app.use(jobRouter)
+app.use(jobRouter)
 app.use(OrgprofileRouter)
 
 app.listen(port,()=>{

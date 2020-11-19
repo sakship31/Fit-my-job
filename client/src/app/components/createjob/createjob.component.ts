@@ -18,6 +18,9 @@ export class CreatejobComponent implements OnInit {
   job_description=""
   skills_required=""
   location=""
+  start_date=""
+  end_date=""
+  apply_by=""
 
   constructor(
     private authService: AuthService,
@@ -33,15 +36,18 @@ export class CreatejobComponent implements OnInit {
       job_title: this.job_title,
       job_description: this.job_description,
       skills_required:this.skills_required,
-      location:this.location
+      location:this.location,
+      start_date:this.start_date,
+      end_date:this.end_date,
+      apply_by:this.apply_by
     }
     // console.log(this.authService.isTypeOrg)
-    this.authService.authenticateUser(job).subscribe(
+    this.authService.createJob(job).subscribe(
       (res) => {
           console.log(res)
           // // console.log(res)
           // this.authService.storeUserData(res.token, res.org,true);
-          // this.router.navigate(['/profile/org/'+res.org._id]);
+          this.router.navigate(['/profile/org/'+res.postedBy._id]);
 
       }, (error) => {
         console.log(error)

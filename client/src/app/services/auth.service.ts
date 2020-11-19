@@ -127,6 +127,20 @@ export class AuthService {
       )
   } 
 
+  createJob(data): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('id_token'),
+    });
+    let options = { headers: headers };
+    console.log("data--",data)
+    let url = 'http://localhost:3000/createjob';
+    return this.http.post(url,data,options)
+      .pipe(
+        catchError(this.errorMgmt)
+      )
+  }
+
   storeUserData(token, user,isOrg) {
     localStorage.setItem('id_token', token);
     localStorage.setItem('user', JSON.stringify(user));

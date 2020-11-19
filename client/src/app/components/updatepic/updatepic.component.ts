@@ -50,7 +50,7 @@ export class UpdatepicComponent implements OnInit {
               console.log(res)
               // console.log(res)
               // this.authService.storeUserData(res.token, res.user);
-              if(this.authService.isOrg){
+              if(localStorage.getItem('isOrg')=='true'){
                 this.router.navigate(['/profile/org/'+res._id]);
               }
               else{

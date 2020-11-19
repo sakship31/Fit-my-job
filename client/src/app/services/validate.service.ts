@@ -40,8 +40,9 @@ export class ValidateService {
     });
     let options = { headers: headers };
     console.log("data:",data)
+    console.log("isOrg",isOrg())
     // console.log(data.image.get("image"))
-    if(!isOrg){
+    if(!isOrg()){
       let url = 'http://localhost:3000/updatepic';
       return this.http.post(url, data, options)
         .pipe(
