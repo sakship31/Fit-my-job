@@ -99,3 +99,7 @@
     justify-content: flex-end;
     margin-top: 50px;
 }
+
+.pointer{
+    cursor: pointer;
+}
