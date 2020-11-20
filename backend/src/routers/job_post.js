@@ -11,6 +11,7 @@ const app = new express.Router()
 //create job
 app.post('/createjob',login_required,async (req,res)=>{
    const {job_title,job_description,skills_required,location,start_date,end_date,apply_by} = req.body 
+   console.log("apply by:",apply_by)
    if(!job_title||!job_description||!skills_required ||!location || !start_date|| !end_date || !apply_by){
      return  res.status(422).json({error:"Please add all the fields"})
    }
@@ -35,7 +36,7 @@ app.get('/joblist', login_required, (req, res) => {
    Job.find({postedBy:req.org})
    // Post.find({ $and: [{ postedBy: { $in: req.user.connections } }, { postedBy: req.user._id }] })
        .populate("postedBy", "_id name pic")
-       .sort('-createdAt')
+       .sort('apply_by')
        .then(posts => {
            res.send({ posts })
        })

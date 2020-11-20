@@ -27,6 +27,7 @@ import { JobdetailComponent } from './components/jobdetail/jobdetail.component';
 const appRoutes: Routes = [
   { path: '', component: ChooseComponent },
   { path: 'createjob', component: CreatejobComponent },
+  { path: 'jobs', component: JoblistComponent },
   { path: 'updateProfile', component: UpdateprofileComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },

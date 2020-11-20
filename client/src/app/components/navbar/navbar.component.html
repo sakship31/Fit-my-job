@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #ffff;">
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color: black;">
   <a class="navbar-brand1" href="#">Fit </a>
   <div class="rectangle"></div>
   <b class="navbar-brand2" href="#">MyJob</b>
@@ -10,7 +10,7 @@
 
   <div class="collapse navbar-collapse">
     <!-- && authService.isChosen() -->
-    <li style="list-style-type:none;margin-left:900px;" *ngIf="!authService.loggedIn() && authService.isChosen()"><a
+    <li style="list-style-type:none;margin-left:800px;" *ngIf="!authService.loggedIn() && authService.isChosen()"><a
         [routerLink]="['/login']">Login</a></li>
     <li style="list-style-type:none;margin-left: 20px;" *ngIf="!authService.loggedIn() && authService.isChosen()"><a
         [routerLink]="['/register']">Register</a></li>
@@ -25,6 +25,8 @@
    
       <li style="list-style-type:none;margin-left: 20px;" *ngIf="authService.loggedIn() && authService.isOrg()"><a
           [routerLink]="['/createjob']">Create JOB</a></li>
+          <li style="list-style-type:none;margin-left: 20px;" *ngIf="authService.loggedIn() && authService.isOrg()"><a
+            [routerLink]="['/jobs']">My Jobs</a></li>
       <li style="list-style-type:none;margin-left: 20px;" *ngIf="authService.loggedIn() && authService.isOrg()"><a
             [routerLink]="['/home']">Home</a></li>
       <li style="list-style-type:none;margin-left: 20px;" *ngIf="authService.loggedIn() && authService.isOrg()"><a
