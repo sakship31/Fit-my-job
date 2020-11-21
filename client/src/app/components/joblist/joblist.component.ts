@@ -24,7 +24,7 @@ export class JoblistComponent implements OnInit {
 
   ngOnInit(): void {
     // console.log(this.authService.isTypeOrg)
-    this.validateService.getJobs().subscribe(
+    this.validateService.getJobs(this.authService.isOrg).subscribe(
       (res) => {
         console.log(res)
         this.jobs=res.posts

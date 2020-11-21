@@ -124,7 +124,7 @@ export class ValidateService {
     }
 
     // jobs
-    getJobs(): Observable<any> {
+    getJobs(isOrg): Observable<any> {
       let headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'Authorization': localStorage.getItem('id_token'),   
@@ -132,11 +132,21 @@ export class ValidateService {
       let options = { headers: headers };
       // console.log("data:",data)
       // console.log(data.image.get("image"))
-      let url = 'http://localhost:3000/joblist';
-      return this.http.get(url, options)
-        .pipe(
-          catchError(this.errorMgmt)
-        )
+      if(isOrg()){
+        let url = 'http://localhost:3000/joblist';
+        return this.http.get(url, options)
+          .pipe(
+            catchError(this.errorMgmt)
+          )
+      }
+      else{
+        let url = 'http://localhost:3000/jobs';
+        return this.http.get(url, options)
+          .pipe(
+            catchError(this.errorMgmt)
+          )
+      }
+
     }
 
   // Error handling 

@@ -17,10 +17,12 @@
 
     <li style="list-style-type:none;margin-left: 20px;" *ngIf="authService.loggedIn() && !authService.isOrg()"><a
         [routerLink]="['/createPost']">Create Post</a></li>
-        <li style="list-style-type:none;margin-left: 20px;" *ngIf="authService.loggedIn() && !authService.isOrg()"><a
-          [routerLink]="['/profile/',getId()]">Profile</a></li>
+        <li style="list-style-type:none;margin-left: 20px;" *ngIf="authService.loggedIn() && !authService.isOrg()">
+          <a [routerLink]="['/profile/',getId()]">Profile</a></li>
     <li style="list-style-type:none;margin-left: 20px;" *ngIf="authService.loggedIn() && !authService.isOrg()"><a
           [routerLink]="['/home']">Home</a></li>
+          <li style="list-style-type:none;margin-left: 20px;" *ngIf="authService.loggedIn() && !authService.isOrg()"><a
+            [routerLink]="['/jobs']">Jobs</a></li>
 
    
       <li style="list-style-type:none;margin-left: 20px;" *ngIf="authService.loggedIn() && authService.isOrg()"><a

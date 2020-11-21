@@ -28,6 +28,7 @@ const appRoutes: Routes = [
   { path: '', component: ChooseComponent },
   { path: 'createjob', component: CreatejobComponent },
   { path: 'jobs', component: JoblistComponent },
+  { path: 'jobdetail/:id', component: JobdetailComponent },
   { path: 'updateProfile', component: UpdateprofileComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
