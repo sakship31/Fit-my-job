@@ -1,4 +1,4 @@
-//local
+// //local
 // const mongoose=require('mongoose')
 // mongoose.connect("mongodb://127.0.0.1:27017/fit-my-job-api",{
 //     useNewUrlParser:true,
@@ -10,6 +10,8 @@
 // }).catch((err)=>{
 //     console.log("Error has occurred while connecting to the database: ",err);
 // })
+
+//atlas
 const mongoose=require('mongoose')
 const {MONGOURI}= require('../../config/keys')
 

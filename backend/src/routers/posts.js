@@ -116,10 +116,15 @@ app.get('/networkposts', login_required, (req, res) => {
     Post.find({postedBy:{$in:req.user.connections}})
     // Post.find({ $and: [{ postedBy: { $in: req.user.connections } }, { postedBy: req.user._id }] })
         .populate("postedBy", "_id name pic")
-        .populate("comments.postedBy", "_id name pic")
+        // .populate("comments.postedBy", "_id name pic")
         .sort('-createdAt')
         .then(posts => {
-            res.send({ posts })
+            User.find({_id:req.user._id})
+            .populate("_id","name email connections")
+            .then(user=>{
+                res.send({ posts,user})
+            })
+            
         })
         .catch(err => {
             console.log(err)

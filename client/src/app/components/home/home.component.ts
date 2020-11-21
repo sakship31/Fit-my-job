@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   status="like"
   toggle = true;
   posts=[]
+  user
 
 
   constructor(
@@ -28,10 +29,12 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    
     this.authService.getNetworkPost().subscribe(
       (res) => {
-        console.log("HEY222",res)
+        console.log(res)
         this.posts=res.posts
+        this.user=res.user[0]
       }, (error) => {
         console.log(error)
       }
