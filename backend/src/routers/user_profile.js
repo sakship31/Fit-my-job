@@ -2,7 +2,7 @@ const express=require('express')
 const Post=require('../models/post')
 const User=require('../models/user')
 const multer=require('multer')
-const sharp=require('sharp')
+//const sharp=require('sharp')
 const login_required=require('../middleware/login_required')
 const { findById } = require('../models/post')
 

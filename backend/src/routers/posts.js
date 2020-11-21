@@ -4,7 +4,7 @@ const User = require('../models/user')
 const login_required = require('../middleware/login_required')
 const { json } = require('body-parser')
 const multer=require('multer')
-const sharp=require('sharp')
+//const sharp=require('sharp')
 
 const app = new express.Router()
 
