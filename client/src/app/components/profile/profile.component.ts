@@ -50,8 +50,6 @@ export class ProfileComponent implements OnInit {
         }
       );
       // console.log("name==",this.name)
-    
-
   }
 
   isOrg(){

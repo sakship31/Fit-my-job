@@ -41,6 +41,10 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  getId(post){
+    return post.postedBy._id
+}
+
   liked(post){
     if( post.likes.indexOf((this.userid)) !==-1){
       return true
