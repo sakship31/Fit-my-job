@@ -37,7 +37,7 @@ export class OrgprofileComponent implements OnInit {
   ngOnInit(): void {
     localStorage.getItem('id_token') ? console.log("") : this.router.navigate(['/login']);
     console.log(this.userid)
-    console.log("check=",this.authService.isTypeOrg)
+    // console.log("check=",this.authService.isTypeOrg)
       this.authService.getOrgProfile(this.activatedRoute.snapshot.params.id).subscribe(
         (res) => {
           console.log("HEY",res)
@@ -82,8 +82,8 @@ export class OrgprofileComponent implements OnInit {
     }
   }
   
-  connected(){
-    if( this.connections.indexOf((this.userid)) !==-1){
+  followed(){
+    if( this.followers.indexOf((this.userid)) !==-1){
       return true
     }
     else{
@@ -91,12 +91,12 @@ export class OrgprofileComponent implements OnInit {
     }
   }
 
-  Connect(){
+  Follow(){
       const followId={followId:this.id}
   
-      this.validateService.connect(followId).subscribe(
+      this.validateService.follow(followId).subscribe(
         (res) => {
-          console.log(res)
+          console.log("Followedd")
           this.ngOnInit()
           // this.router.navigate(['/profile/'+res.user._id]);
         }, (error) => {
@@ -105,17 +105,19 @@ export class OrgprofileComponent implements OnInit {
         );
   }
 
-  Remove(){
+  Unfollow(){
     const unfollowId={unfollowId:this.id}
-    this.validateService.remove(unfollowId).subscribe(
+    this.validateService.unfollow(unfollowId).subscribe(
       (res) => {
-        this.ngOnInit()
         console.log("removed")
+        this.ngOnInit()
+       
         // this.router.navigate(['/profile/'+res.user._id]);
       }, (error) => {
         console.log(error)
       }
       );
 }
+
 
 }

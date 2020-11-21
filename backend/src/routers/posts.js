@@ -2,6 +2,7 @@ const express = require('express')
 const Post = require('../models/post')
 const User = require('../models/user')
 const login_required = require('../middleware/login_required')
+const login_required2 = require('../middleware/org_login_req')
 const { json } = require('body-parser')
 const multer=require('multer')
 //const sharp=require('sharp')
@@ -10,6 +11,27 @@ const app = new express.Router()
 
 //user specific posts (self and other users)
 app.get('/profile/:id', login_required, (req, res) => {
+    // console.log(req.params.id)
+    Post.find({postedBy:req.params.id})
+        .populate("_id", "_id name email pic connections")
+        //.populate("comments.postedBy","_id name")
+        .sort('-createdAt')
+        .then((posts) => {
+            // console.log("posts-",posts)
+            User.find({ _id: req.params.id })
+                .populate("_id", "_id name email pic connections")
+                .then((user) => {
+                    return res.send({ posts, user })
+                }).catch(err => {
+                    console.log(err)
+                })
+        }).catch(err => {
+            console.log(err)
+        })
+})
+
+//user specific posts (self and other users) for org to view
+app.get('/profile/c/:id', login_required2, (req, res) => {
     // console.log(req.params.id)
     Post.find({postedBy:req.params.id})
         .populate("_id", "_id name email pic connections")

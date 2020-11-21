@@ -63,11 +63,21 @@ export class AuthService {
     });
     let options = { headers: headers };
     // console.log("data--",data._id,data.name)
-    let url = 'http://localhost:3000/profile/'+data;
-    return this.http.get(url, options)
-      .pipe(
-        catchError(this.errorMgmt)
-      )
+    if(this.isOrg()){
+      let url = 'http://localhost:3000/profile/c/'+data;
+      return this.http.get(url, options)
+        .pipe(
+          catchError(this.errorMgmt)
+        )
+    }
+    else{
+      let url = 'http://localhost:3000/profile/'+data;
+      return this.http.get(url, options)
+        .pipe(
+          catchError(this.errorMgmt)
+        )
+    }
+  
   }
 
   getOrgProfile(data): Observable<any> {
@@ -77,11 +87,21 @@ export class AuthService {
     });
     let options = { headers: headers };
     // console.log("data--",data._id,data.name)
-    let url = 'http://localhost:3000/profile/org/'+data;
-    return this.http.get(url, options)
-      .pipe(
-        catchError(this.errorMgmt)
-      )
+    if(this.isOrg()){
+      let url = 'http://localhost:3000/profile/org/'+data;
+      return this.http.get(url, options)
+        .pipe(
+          catchError(this.errorMgmt)
+        )
+    }
+    else{
+      let url = 'http://localhost:3000/profile/org/c/'+data;
+      return this.http.get(url, options)
+        .pipe(
+          catchError(this.errorMgmt)
+        )
+    }
+ 
   }
 
   getNetworkPost(): Observable<any> {

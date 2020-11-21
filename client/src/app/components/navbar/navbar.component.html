@@ -25,8 +25,8 @@
             [routerLink]="['/jobs']">Jobs</a></li>
 
    
-      <li style="list-style-type:none;margin-left: 20px;" *ngIf="authService.loggedIn() && authService.isOrg()"><a
-          [routerLink]="['/createjob']">Create JOB</a></li>
+      <li style="list-style-type:none;margin-left: 20px;" *ngIf="authService.loggedIn() && authService.isOrg()">
+        <a [routerLink]="['/createjob']">Create JOB</a></li>
           <li style="list-style-type:none;margin-left: 20px;" *ngIf="authService.loggedIn() && authService.isOrg()"><a
             [routerLink]="['/jobs']">My Jobs</a></li>
       <li style="list-style-type:none;margin-left: 20px;" *ngIf="authService.loggedIn() && authService.isOrg()"><a

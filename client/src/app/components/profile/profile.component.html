@@ -6,10 +6,10 @@ posts=={{posts.length}}
    <button style="margin-left: 30px;" (click)="onUpdatePic()" *ngIf="self()">
       Update Profile Picture
    </button>
-   <button style="margin-left: 30px;" (click)="Connect()" *ngIf="(!self() && !connected())" #content>
+   <button style="margin-left: 30px;" (click)="Connect()" *ngIf="(!self() && !connected() && !authService.isOrg())" #content>
       Connect
    </button>
-   <button style="margin-left: 30px;" (click)="Remove()" *ngIf="(!self() && connected())" #content>
+   <button style="margin-left: 30px;" (click)="Remove()" *ngIf="(!self() && connected() && !authService.isOrg())" #content>
       Remove
    </button>
 </div>
@@ -22,7 +22,7 @@ posts=={{posts.length}}
    </div>
    <div *ngFor="let skill of skills">
       Skill: {{skill.skill.name}}<br>
-      Project url:{{skill.skill.project_url}}
+      Project url:<a href="{{skill.skill.project_url}}">{{skill.skill.project_url}}</a>
    </div>
 </div>
 </div>
