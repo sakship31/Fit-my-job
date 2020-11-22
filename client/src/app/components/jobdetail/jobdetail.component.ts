@@ -62,6 +62,7 @@ Apply(id){
   this.validateService.apply(jobId).subscribe(
     (res) => {
       console.log(res)
+      this.ngOnInit()
       
     }, (error) => {
       console.log(error)
