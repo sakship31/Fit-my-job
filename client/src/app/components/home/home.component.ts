@@ -69,6 +69,10 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  onCreatePost(){
+    this.router.navigate(['/createPost'])
+  }
+
   unlike(post){
     const postId={
       postId:post._id
@@ -84,5 +88,10 @@ export class HomeComponent implements OnInit {
       }
     );
   }
+  myImage:String = "assets/images/location.png";  
+  writePost:String = "assets/images/write.png";  
+  dreamJob:String = "assets/images/linkedIn.jpg";  
+
+
 
 }

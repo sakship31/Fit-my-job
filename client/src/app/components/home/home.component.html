@@ -1,16 +1,54 @@
-<h5>ADD CREATE POST BUTTON HERE<h5>
- <h6> {{user.name}} || {{user.email}} || {{user.connections.length}}</h6>
+
+
 <div class="home">
+  
+    <div class="column1">
+      <div class="card" >
+        <div class="profile-card">
+          <div class="profile-card__img">
+             <img src="{{user.pic}}" style="width:100%;height:100%;border-radius: 50%;" />
+          </div>
+          <div class="profile-card__cnt js-profile-cnt">
+             <div class="profile-card__name">{{name}}</div>
+             <div class="profile-card__txt">Front-end Developer from <strong>Mumbai</strong></div>
+             <div class="profile-card-loc">
+                <span class="profile-card-loc__icon">
+                  <!-- <svg class="icon"><use xlink:href="#icon-location"></use></svg> -->
+                  <img class="icon"  [src]=myImage >
+                </span>
+        
+                <span class="profile-card-loc__txt">
+                  Maharashtra, India
+                </span>
+              </div>
+          </div>
+              
+          </div>
+      </div>
+    </div>
+  
+    <div class="column2">
+
+      <div class="column">
+        <div class="card">
+          <div class="writepost">
+            <button class="addpost" (click)="onCreatePost()">
+              <img class="icon1" [src]= writePost  />
+              Add Post</button>
+          </div>
+          
+         </div>
+  
+      </div>
 
 
-     <div class="card home-card"
+      <div class="card home-card"
      style="  max-width: 500px;
      height: max-content;
      margin: 26px auto;"
-     *ngFor="let post of posts"
-     >
-     <div>
-      <div class="card-image">
+     *ngFor="let post of posts">
+     
+      <div class="card" style="border-radius:12px 12px 0 0"> 
         <div >
           <img style="padding:7px; width:50px;height:50px;border-radius:30px;float:left;"
                  src="{{post.postedBy.pic}}"/></div><h5 style="padding-left:3px;padding-top:12px;font-size:20px"><a [routerLink]="['/profile/',getId(post)]">{{post.postedBy.name}}</a>
@@ -36,6 +74,22 @@
                                  </form> -->
               
           </div>
-         </div>
-      </div> 
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="card" >
+        <h3>Card 2</h3>
+        <p>Some text</p>
+        <p>Some text</p>
+        <img [src]=dreamJob >
+      </div>
+    </div>
+
+    
+    
+    
+
+     
    </div>
+ 
