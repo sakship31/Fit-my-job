@@ -32,6 +32,32 @@ export class ValidateService {
     )
 }
 
+
+  //job detail 
+  getJobDetail(data,isOrg): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('id_token'),   
+    });
+    let options = { headers: headers };
+    console.log("data:",data)
+    // console.log(data.image.get("image"))
+    if(isOrg()){
+      let url = 'http://localhost:3000/jobdetail/org/'+data;
+      return this.http.get(url, options)
+        .pipe(
+          catchError(this.errorMgmt)
+        )
+    }
+    else{
+      let url = 'http://localhost:3000/jobdetail/'+data;
+      return this.http.get(url, options)
+        .pipe(
+          catchError(this.errorMgmt)
+        )
+    }
+  }
+
   //update profile picture 
   updatePic(data,isOrg): Observable<any> {
     let headers = new HttpHeaders({
@@ -75,6 +101,8 @@ export class ValidateService {
       )
   }
 
+
+
    //connect
    connect(data): Observable<any> {
     let headers = new HttpHeaders({
@@ -106,6 +134,54 @@ export class ValidateService {
           catchError(this.errorMgmt)
         )
     }
+
+     //follow
+   follow(data): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('id_token'),   
+    });
+    let options = { headers: headers };
+    console.log("data:",data)
+    // console.log(data.image.get("image"))
+    let url = 'http://localhost:3000/follow';
+    return this.http.post(url, data, options)
+      .pipe(
+        catchError(this.errorMgmt)
+      )
+  }
+
+       //unfollow
+       unfollow(data): Observable<any> {
+        let headers = new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': localStorage.getItem('id_token'),   
+        });
+        let options = { headers: headers };
+        console.log("data:",data)
+        // console.log(data.image.get("image"))
+        let url = 'http://localhost:3000/unfollow';
+        return this.http.post(url, data, options)
+          .pipe(
+            catchError(this.errorMgmt)
+          )
+      }
+
+           //apply
+          apply(data): Observable<any> {
+            let headers = new HttpHeaders({
+              'Content-Type': 'application/json',
+              'Authorization': localStorage.getItem('id_token'),   
+            });
+            let options = { headers: headers };
+            console.log("data:",data)
+            // console.log(data.image.get("image"))
+            let url = 'http://localhost:3000/apply';
+            return this.http.post(url, data, options)
+              .pipe(
+                catchError(this.errorMgmt)
+              )
+          }
 
     //update organisation profile
     updateOrgProfile(data): Observable<any> {

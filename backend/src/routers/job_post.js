@@ -65,12 +65,34 @@ app.get('/jobs', login_required_normal, (req, res) => {
         })
  })
 
- //jobs by all organisations
+ //job detail(for org)
+app.get('/jobdetail/org/:id', login_required, (req, res) => {
+    Job.find({_id:req.params.id})
+    .populate("applicants","_id name pic")
+    .then((post) => {
+                // console.log("postedBy-",post[0].postedBy)
+                posted_by=post[0].postedBy
+                Org.find({_id:posted_by})
+                // .populate("_id", "_id name email pic")
+                .then((user) => {
+                    Org.find({_id:posted_by})
+                    return res.send({ post, user })
+                }).catch(err => {
+                    console.log(err)
+                })
+            }).catch(err => {
+                console.log(err)
+            })
+ })
+
+ 
+ //job detail(for normal user)
 app.get('/jobdetail/:id', login_required_normal, (req, res) => {
+    //console.log("params=aaaaaaaaaaaaaaaaaaaaaa",req.params.id)
     Job.find({_id:req.params.id})
     //.populate("_id", "job_title job_description start_date end_date skills_required location apply_by postedBy")
     .then((post) => {
-                console.log("postedBy-",post[0].postedBy)
+               // console.log("postedBy-",post[0].postedBy)
                 posted_by=post[0].postedBy
                 Org.find({_id:posted_by})
                 // .populate("_id", "_id name email pic")
@@ -82,6 +104,24 @@ app.get('/jobdetail/:id', login_required_normal, (req, res) => {
             }).catch(err => {
                 console.log(err)
             })
+ })
+
+ //applicant
+ app.post('/apply', login_required_normal, (req, res) => {
+    Job.findByIdAndUpdate(req.body.jobId, {
+        $push: { applicants: req.user._id }
+    }, {
+        new: true
+    })
+        // .populate("comments.postedBy", "_id name pic")
+        // .populate("postedBy", "_id name pic")
+        .exec((err, result) => {
+            if (err) {
+                return res.status(422).send(err)
+            } else {
+                res.send(result)
+            }
+        })
  })
 
 module.exports = app 
