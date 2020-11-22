@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 
 
 <div class="wrapper">
@@ -61,37 +61,4 @@
    
    
   
-=======
-<div ><p>normal user profile works! </p>{{name}}<br>{{location}}<br>{{email}}<br>
-connections=={{connections.length}}
-posts=={{posts.length}}
-<div>
-   <img src="{{profile}}" style="width:120px;height:120px;border-radius: 50%;" />
-   <button style="margin-left: 30px;" (click)="onUpdatePic()" *ngIf="self()">
-      Update Profile Picture
-   </button>
-   <button style="margin-left: 30px;" (click)="Connect()" *ngIf="(!self() && !connected() && !authService.isOrg())" #content>
-      Connect
-   </button>
-   <button style="margin-left: 30px;" (click)="Remove()" *ngIf="(!self() && connected() && !authService.isOrg())" #content>
-      Remove
-   </button>
-</div>
-<br>
-<div>
-   <div>
-      <button style="margin-left: 30px;" (click)="onAdd()" *ngIf="self()">
-         Add skill
-      </button>
-   </div>
-   <div *ngFor="let skill of skills">
-      Skill: {{skill.skill.name}}<br>
-      Project url:<a href="{{skill.skill.project_url}}">{{skill.skill.project_url}}</a>
->>>>>>> 97364786d056ce63ace5683f7b987f2c868bec6a
-   </div>
-   
-</div>
-
-</div>
-
 
