@@ -49,7 +49,7 @@ const userSchema=new mongoose.Schema({
         }
     }],
     education:[{
-        study:{
+        studies:{
             study:{
                 // required:true,
                 type:String,
@@ -59,7 +59,15 @@ const userSchema=new mongoose.Schema({
             }
         }
     }],
-    location:{
+    about:{
+           // required:true,
+        type:String
+    },
+    city:{
+        // required:true,
+        type:String
+    },
+    state:{
         // required:true,
         type:String
     },

@@ -77,30 +77,44 @@ app.post('/addSkill/:id', login_required, (req, res) => {
     }, {
         new: true
     })
-        // .populate("comments.postedBy", "_id name pic")
-        // .populate("postedBy", "_id name pic")
         .exec((err, result) => {
             if (err) {
                 return res.status(422).send(err)
             } else {
                 res.send(result)
-                // console.log("skill:",skill)
-                // console.log("user:",res)
             }
         })
 })
 
-
-app.post('/search',(req,res)=>{
-    let userPattern = new RegExp("^"+req.body.query)
-    User.find({name:{$regex:userPattern}})
-    .select("_id name pic")
-    .then(user=>{
-        res.send({user})
-    }).catch(err=>{
-        console.log(err)
+app.post('/addEd/:id', login_required, (req, res) => {
+    const study=req.body.study
+    const uni_name=req.body.uni_name
+    const studies={study,uni_name}
+    console.log(studies)
+    User.findByIdAndUpdate(req.params.id, {
+        $push: { education: {studies} }
+    }, {
+        new: true
     })
+        .exec((err, result) => {
+            if (err) {
+                return res.status(422).send(err)
+            } else {
+                res.send(result)
+            }
+        })
 })
+
+// app.post('/search',(req,res)=>{
+//     let userPattern = new RegExp("^"+req.body.query)
+//     User.find({name:{$regex:userPattern}})
+//     .select("_id name pic")
+//     .then(user=>{
+//         res.send({user})
+//     }).catch(err=>{
+//         console.log(err)
+//     })
+// })
 
 //check self or other's connections
 app.get('/network/:id',(req,res)=>{

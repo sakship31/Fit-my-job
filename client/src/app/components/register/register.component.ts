@@ -17,6 +17,9 @@ export class RegisterComponent implements OnInit {
   username: String;
   email: String;
   password: String;
+  city: String;
+  state: String;
+  about: String;
 
   constructor(private validateService: ValidateService,private authService:AuthService,private router: Router) { }
 
@@ -27,7 +30,10 @@ export class RegisterComponent implements OnInit {
     const user = {
       name: this.name,
       email: this.email,
-      password: this.password
+      password: this.password,
+      about:this.about,
+      city:this.city,
+      state:this.state
     }
         // Validate Email
         if(!this.validateService.validateEmail(user.email)){

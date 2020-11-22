@@ -17,12 +17,15 @@ export class ProfileComponent implements OnInit {
   profile = "";
   name = "";
   id="";
-  location="";
+  about="";
   email=""
+  city=""
+  state=""
   userid=JSON.parse(localStorage.getItem('user'))._id;
   posts = [];
   connections = [];
   skills=[];
+  education=[];
   constructor(
     private authService: AuthService,
     private validateService:ValidateService,
@@ -40,9 +43,12 @@ export class ProfileComponent implements OnInit {
           this.name = res.user[0].name;
           this.profile = res.user[0].pic;
           this.connections = res.user[0].connections;
+          this.education = res.user[0].education;
           this.skills=res.user[0].skills;
           this.posts = res.posts;
-          this.location=res.user[0].location
+          this.about=res.user[0].about
+          this.city=res.user[0].city
+          this.state=res.user[0].state
           this.email=res.user[0].email
           
         }, (error) => {
@@ -56,8 +62,11 @@ export class ProfileComponent implements OnInit {
     return this.authService.isTypeOrg
   }
 
-  onAdd(){
+  onAddSkill(){
     this.router.navigate(['/addSkill/'+JSON.parse(localStorage.getItem('user'))._id])
+  }
+  onAddEd(){
+    this.router.navigate(['/addEd/'+JSON.parse(localStorage.getItem('user'))._id])
   }
 
   onUpdatePic(){

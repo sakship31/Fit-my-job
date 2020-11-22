@@ -23,6 +23,7 @@ import { UpdateprofileComponent } from './components/updateprofile/updateprofile
 import { CreatejobComponent } from './components/createjob/createjob.component';
 import { JoblistComponent } from './components/joblist/joblist.component';
 import { JobdetailComponent } from './components/jobdetail/jobdetail.component';
+import { AddeduComponent } from './components/addedu/addedu.component';
 
 const appRoutes: Routes = [
   { path: '', component: ChooseComponent },
@@ -38,6 +39,7 @@ const appRoutes: Routes = [
   { path: 'createPost', component: CreatepostComponent },
   { path: 'updatePic', component: UpdatepicComponent },
   { path: 'addSkill/:id', component: AddskillComponent },
+  { path: 'addEd/:id', component: AddeduComponent },
 ]
 
 @NgModule({
@@ -56,7 +58,8 @@ const appRoutes: Routes = [
     UpdateprofileComponent,
     CreatejobComponent,
     JoblistComponent,
-    JobdetailComponent
+    JobdetailComponent,
+    AddeduComponent
   ],
   imports: [
     BrowserModule,

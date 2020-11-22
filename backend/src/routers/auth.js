@@ -12,7 +12,7 @@ app.post('/signup',(req,res)=>{
     // console.log("body-",req.body)
     const user=new User(req.body)
     // console.log("user=",user)
-    if(!user.email || !user.password || !user.name){
+    if(!user.email || !user.password || !user.name || !user.city || !user.state || !user.about){
         return res.status(422).send({message:"Please add all the fields"})
      }
 

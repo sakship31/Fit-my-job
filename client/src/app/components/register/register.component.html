@@ -12,5 +12,17 @@
     <label>Password</label>
     <input type="password" [(ngModel)]="password" name="password" class="form-control">
   </div>
+  <div class="form-group" *ngIf="(!authService.isOrg())" >
+    <label>About</label>
+    <input type="text" [(ngModel)]="about" name="about" class="form-control" >
+  </div>
+  <div class="form-group" *ngIf="(!authService.isOrg())">
+    <label>City</label>
+    <input type="text" [(ngModel)]="city" name="city" class="form-control" >
+  </div>
+  <div class="form-group" *ngIf="(!authService.isOrg())">
+    <label>State</label>
+    <input type="text" [(ngModel)]="state" name="state" class="form-control" >
+  </div>
   <input type="submit" class="btn btn-primary" value="Submit">
 </form>

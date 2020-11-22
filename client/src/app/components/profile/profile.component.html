@@ -38,12 +38,19 @@
          <button class= "profile-card__button1 button--blue" style="margin-left: 30px;" (click)="onUpdatePic()" *ngIf="self()">
             Update Profile Picture
          </button>
-         <button class= "profile-card__button2 button--orange" style="margin-left: 30px;" (click)="onAdd()" *ngIf="self()">
+         <button class= "profile-card__button2 button--orange" style="margin-left: 30px;" (click)="onAddSkill()" *ngIf="self()">
             Add skill
+         </button>
+         <button class= "profile-card__button2 button--orange" style="margin-left: 30px;" (click)="onAddEd()" *ngIf="self()">
+            Add Edu
          </button>
          <div *ngFor="let skill of skills">
             Skill: {{skill.skill.name}}<br>
             Project url:{{skill.skill.project_url}}
+         </div>
+         <div *ngFor="let edu of education">
+            Edu: {{edu.studies.study}}<br>
+            University name:{{edu.studies.uni_name}}
          </div>
          
          <button style="margin-left: 30px;" (click)="Connect()" *ngIf="(!self() && !connected()  && !authService.isOrg())" #content>
