@@ -39,5 +39,22 @@ export class JoblistComponent implements OnInit {
   apply(job){
       return job.apply_by.slice(0,10)
   }
+
+  deleteJob(jobid){
+    const id={
+      id:jobid
+    }
+    this.validateService.deleteJob(id).subscribe(
+      (res) => {
+        console.log(res)
+        this.router.navigate(['/profile/org/'+res.postedBy]);
+        // this.jobs=res.posts
+
+      }, (error) => {
+        console.log(error)
+        // this.router.navigate(['/login']);
+      }
+      );
+  }
   
 }

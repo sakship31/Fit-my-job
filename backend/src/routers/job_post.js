@@ -106,6 +106,21 @@ app.get('/jobdetail/:id', login_required_normal, (req, res) => {
             })
  })
 
+ //delete job
+
+ app.post('/job/delete',login_required,async (req,res)=>{
+    try{
+        //const user=await Task1.findByIdAndDelete(req.params.id)
+        const post=await Job.findOneAndDelete({_id:req.body.id,postedBy:req.org._id})
+        if(!post){
+            return res.status(404).send()
+        }
+        res.send(post)
+    }catch{
+        return res.status(500).send()
+    }
+})
+
  //applicant
  app.post('/apply', login_required_normal, (req, res) => {
     Job.findByIdAndUpdate(req.body.jobId, {

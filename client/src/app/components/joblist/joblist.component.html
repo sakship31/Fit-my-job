@@ -8,6 +8,9 @@
             <h5 style="padding-left:3px;padding-top:12px;font-size:20px"><a [routerLink]="['/jobdetail',job._id]">{{job.job_title}}</a></h5>
             <div style="padding-left:43px;padding-top:12px;font-size:15px">org name:{{job.postedBy.name}}</div>
             <div style="padding-left:43px;padding-top:12px;font-size:15px">apply by:{{apply(job)}}</div>
+            <button class= "profile-card__button2 button--orange" style="margin-left: 30px;" (click)="deleteJob(job._id)" *ngIf="authService.isOrg()">
+              Delete Job 
+            </button>
          </div>
          <br>
          <hr>
