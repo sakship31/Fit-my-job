@@ -21,11 +21,23 @@ export class ProfileComponent implements OnInit {
   email=""
   city=""
   state=""
-  userid=JSON.parse(localStorage.getItem('user'))._id;
   posts = [];
   connections = [];
   skills=[];
   education=[];
+  all_users=[]
+  // profile_all = "";
+  // name_all = "";
+  // id_all="";
+  // about_all="";
+  // email_all=""
+  // city_all=""
+  // state_all=""
+  // posts_all = [];
+  // connections_all = [];
+  // skills_all=[];
+  // education_all=[];
+  userid=JSON.parse(localStorage.getItem('user'))._id;
   constructor(
     private authService: AuthService,
     private validateService:ValidateService,
@@ -50,7 +62,26 @@ export class ProfileComponent implements OnInit {
           this.city=res.user[0].city
           this.state=res.user[0].state
           this.email=res.user[0].email
-          
+         ///////////////////////////////////////////////
+         this.authService.getProfileAll().subscribe(
+          (res) => {
+            console.log("HEY222=",res.users)
+            this.all_users=res.users
+            // this.id_all=res.users._id._id;
+            // this.name_all = res.users[0].name;
+            // this.profile_all = res.users[0].pic;
+            // this.connections_all = res.users[0].connections;
+            // this.education_all = res.users[0].education;
+            // this.skills_all=res.users[0].skills;
+            // this.about_all=res.users[0].about
+            // this.city_all=res.users[0].city
+            // this.state_all=res.users[0].state
+            // this.email_all=res.users[0].email
+          }, (error) => {
+            console.log(error)
+          }
+        );
+         //////////////////////////////////////////////
         }, (error) => {
           console.log(error)
         }

@@ -80,6 +80,20 @@ export class AuthService {
   
   }
 
+  
+  getProfileAll(): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('id_token'),
+    });
+    let options = { headers: headers };
+      let url = 'http://localhost:3000/allusers';
+      return this.http.get(url, options)
+        .pipe(
+          catchError(this.errorMgmt)
+        )
+  }
+
   getOrgProfile(data): Observable<any> {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',

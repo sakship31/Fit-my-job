@@ -128,6 +128,18 @@ app.get('/network/:id',(req,res)=>{
     
 })
 
+app.get('/allusers',login_required,(req,res)=>{   
+    User.find({$and:[{_id:{$nin:req.user.connections}},{_id:{$nin:req.user._id}}]})
+    // .populate("postedBy","_id name pic")
+    // .populate("comments.postedBy","_id name pic")
+    .sort('-createdAt')
+    .then((users)=>{
+        res.send({users})  
+    }).catch(err=>{
+        console.log(err)
+    })
+
+})
 //////////////////////////////////////////////////////////////////////////
 // app.get('/following/:id',(req,res)=>{
 //     User.find({_id:req.params.id})

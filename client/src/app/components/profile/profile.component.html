@@ -48,11 +48,18 @@
             Skill: {{skill.skill.name}}<br>
             Project url:{{skill.skill.project_url}}
          </div>
+         <br>
          <div *ngFor="let edu of education">
             Edu: {{edu.studies.study}}<br>
             University name:{{edu.studies.uni_name}}
          </div>
          
+         <br>
+         <!-- non connected users start-->
+         <div *ngFor="let user of all_users">
+            Non connected users: {{user.name}}
+         </div>
+          <!-- non connected users end-->
          <button style="margin-left: 30px;" (click)="Connect()" *ngIf="(!self() && !connected()  && !authService.isOrg())" #content>
             Connect
          </button>
@@ -61,6 +68,7 @@
          </button>
         
       </div>
+    
 
 
 
