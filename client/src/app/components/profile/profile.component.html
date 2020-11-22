@@ -1,28 +1,69 @@
-<div ><p>normal user profile works! </p>{{name}}<br>{{location}}<br>{{email}}<br>
-connections=={{connections.length}}
-posts=={{posts.length}}
-<div>
-   <img src="{{profile}}" style="width:120px;height:120px;border-radius: 50%;" />
-   <button style="margin-left: 30px;" (click)="onUpdatePic()" *ngIf="self()">
-      Update Profile Picture
-   </button>
-   <button style="margin-left: 30px;" (click)="Connect()" *ngIf="(!self() && !connected())" #content>
-      Connect
-   </button>
-   <button style="margin-left: 30px;" (click)="Remove()" *ngIf="(!self() && connected())" #content>
-      Remove
-   </button>
-</div>
-<br>
-<div>
-   <div>
-      <button style="margin-left: 30px;" (click)="onAdd()" *ngIf="self()">
-         Add skill
-      </button>
+
+
+<div class="wrapper">
+   <div class="profile-card">
+      <div class="profile-card__img">
+         <img src="{{profile}}" style="width:100%;height:100%;border-radius: 50%;" />
+      </div>
+      <div class="profile-card__cnt js-profile-cnt">
+         <div class="profile-card__name">{{name}}</div>
+         <div class="profile-card__txt">Front-end Developer from <strong>Mumbai</strong></div>
+         <div class="profile-card-loc">
+            <span class="profile-card-loc__icon">
+              <!-- <svg class="icon"><use xlink:href="#icon-location"></use></svg> -->
+              <img class="icon"  [src]=myImage >
+            </span>
+    
+            <span class="profile-card-loc__txt">
+              Maharashtra, India
+            </span>
+          </div>
+         
+          
+      </div>
+
+      <div class="profile-card-ctr">
+
+         <div class="profile-card-inf">
+            <div class="profile-card-inf__item">
+              <div class="profile-card-inf__title">{{connections.length}}</div>
+              <div class="profile-card-inf__txt">Connections</div>
+            </div>
+    
+            <div class="profile-card-inf__item">
+               <div class="profile-card-inf__title">{{posts.length}}</div>
+               <div class="profile-card-inf__txt">Posts</div>
+             </div>
+         <button class= "profile-card__button1 button--blue" style="margin-left: 30px;" (click)="onUpdatePic()" *ngIf="self()">
+            Update Profile Picture
+         </button>
+         <button class= "profile-card__button2 button--orange" style="margin-left: 30px;" (click)="onAdd()" *ngIf="self()">
+            Add skill
+         </button>
+         <div *ngFor="let skill of skills">
+            Skill: {{skill.skill.name}}<br>
+            Project url:{{skill.skill.project_url}}
+         </div>
+         
+         <button style="margin-left: 30px;" (click)="Connect()" *ngIf="(!self() && !connected()  && !authService.isOrg())" #content>
+            Connect
+         </button>
+         <button style="margin-left: 30px;" (click)="Remove()" *ngIf="(!self() && connected() && !authService.isOrg())" #content>
+            Remove
+         </button>
+        
+      </div>
+
+
+
+
+   
+   
+  
    </div>
-   <div *ngFor="let skill of skills">
-      Skill: {{skill.skill.name}}<br>
-      Project url:{{skill.skill.project_url}}
-   </div>
+   
 </div>
+
 </div>
+
+

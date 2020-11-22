@@ -108,6 +108,7 @@ export class ProfileComponent implements OnInit {
       }
       );
 }
+myImage:String = "assets/images/location.png";  
 
 
 }
