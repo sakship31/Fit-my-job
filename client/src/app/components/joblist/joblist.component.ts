@@ -47,7 +47,8 @@ export class JoblistComponent implements OnInit {
     this.validateService.deleteJob(id).subscribe(
       (res) => {
         console.log(res)
-        this.router.navigate(['/profile/org/'+res.postedBy]);
+        this.ngOnInit()
+        //this.router.navigate(['/profile/org/'+res.postedBy]);
         // this.jobs=res.posts
 
       }, (error) => {
