@@ -24,6 +24,7 @@ import { CreatejobComponent } from './components/createjob/createjob.component';
 import { JoblistComponent } from './components/joblist/joblist.component';
 import { JobdetailComponent } from './components/jobdetail/jobdetail.component';
 import { AddeduComponent } from './components/addedu/addedu.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const appRoutes: Routes = [
   { path: '', component: ChooseComponent },
@@ -67,6 +68,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FormsModule,
     HttpClientModule,
+    NgbModule,
     // NgFlashMessagesModule.forRoot(),
   ],
   providers: [ValidateService, AuthService, HttpClientModule],

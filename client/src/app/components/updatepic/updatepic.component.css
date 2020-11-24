@@ -1,0 +1,10 @@
+.card{
+    width: 100%;
+    min-height: 200px;
+    border-radius: 12px;
+    display: block;
+}
+
+.btn span{
+    margin-top: 20px;
+}

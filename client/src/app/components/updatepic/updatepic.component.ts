@@ -6,6 +6,7 @@ import axios from 'axios';
 import { Router } from '@angular/router';
 import {ValidateService} from '../../services/validate.service';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import {NgbModal,ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 const {URL,UPLOAD_PRESET,CLOUD_NAME}=require('../../config/keys') 
 
 @Component({
@@ -14,13 +15,16 @@ const {URL,UPLOAD_PRESET,CLOUD_NAME}=require('../../config/keys')
   styleUrls: ['./updatepic.component.css']
 })
 export class UpdatepicComponent implements OnInit {
-
+  closeResult = '';
+  
   image:File=null
   pic=""
   constructor(
     private authService: AuthService,
     private validateService:ValidateService,
     private router: Router,
+
+    private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -30,6 +34,19 @@ export class UpdatepicComponent implements OnInit {
     this.image=<File>event.target.files[0]
     console.log("dsjskj==",(this.image))
   }
+
+  open(content) { 
+    this.modalService.open(content, 
+   {ariaLabelledBy: 'modal-basic-title'}).result
+   .then((result)  => { 
+      this.closeResult = `Closed with: ${result}`; 
+    }, (reason) => { 
+      this.closeResult =  
+         `Dismissed ${this.getDismissReason(reason)}`; 
+    }); 
+  } 
+
+
 
   onUpdatePic(){
     
@@ -68,5 +85,17 @@ export class UpdatepicComponent implements OnInit {
       })
    
       ////node server 
+  }
+  
+
+
+  private getDismissReason(reason: any): string { 
+    if (reason === ModalDismissReasons.ESC) { 
+      return 'by pressing ESC'; 
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) { 
+      return 'by clicking on a backdrop'; 
+    } else { 
+      return `with: ${reason}`; 
+    } 
   }
 }

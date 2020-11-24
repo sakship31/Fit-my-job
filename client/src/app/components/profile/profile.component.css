@@ -6,6 +6,24 @@ html {
   overflow-x: hidden!important;
 }
 
+.row{
+  display: block;
+  width: 100%;
+height: auto;
+min-height: 100vh;
+padding: 50px 20px;
+padding-top: 100px;
+display: flex;
+/* background-image: linear-gradient(-20deg, #4B79A1 0%, #30475E 100%); */
+background-color: #EFEEEE;
+
+
+@media screen and (max-width: 768px) {
+  height: auto;
+  min-height: 100vh;
+  padding-top: 100px;
+}
+}
 
 * {
   box-sizing: border-box;
@@ -16,7 +34,33 @@ body {
   font-family: 'Quicksand', sans-serif;
   
 }
+.card {
+    
+  background: #fff;
+  border-radius: 12px;
+     
 
+}
+.column1 {
+  float: left;
+  margin-top: 20px;
+  width: 70%;
+  padding: 0 10px 0 60px;
+}
+
+.column2 {
+  float: left;
+  margin-top: 20px;
+  padding: 0 20px 0 60px;
+  width: 25%;
+}
+
+.column3{
+  float: left;
+  margin-top: 440px;
+  width: 100%;
+  
+}
 
 a, a:hover {
   text-decoration: none;
@@ -64,6 +108,51 @@ a, a:hover {
   max-width: 1000px;
   position: absolute;
 }
+
+.skillcard{
+  width: 100%;
+  margin: auto;
+  /* box-shadow:0px 8px 60px -10px rgba(13,28,39,0.6); ; */
+  background: #fff;
+  border-radius: 12px;
+}
+.skillcard h1{
+  display: block;
+  font-size: 1.5em;
+  margin: 15px 35px;
+  
+  font-weight: bold;
+}
+.skillcard p{
+  font-size: 1em;
+  margin-top: -30px;
+  margin-left: 37px;
+  
+}
+
+.educationcard{
+  width: 100%;
+  margin: auto;
+  /* box-shadow:0px 8px 60px -10px rgba(13,28,39,0.6); ; */
+  background: #fff;
+  border-radius: 12px;
+}
+.educationcard h1{
+  display: block;
+  font-size: 1.5em;
+  margin: 15px 35px;
+  
+  font-weight: bold;
+}
+.educationcard p{
+  font-size: 1em;
+  margin-top: -30px;
+  margin-left: 37px;
+  
+}
+
+
+
 .profile-card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
   }
@@ -203,10 +292,10 @@ a, a:hover {
         font-weight: 700;
         font-size: 19px;
         margin: 15px 35px;
-        padding: 15px 40px;
-        min-width: 201px;
+        padding: 7.5px 40px;
+        width: 300px;
         border-radius: 50px;
-        min-height: 55px;
+        height: 40px;
         color: #fff;
         cursor: pointer;
         backface-visibility: hidden;
@@ -350,9 +439,107 @@ a, a:hover {
     
         
 
- 
+          .card .profile-card__button2 {
+            background: none;
+            border: none;
+            font-family: 'Quicksand', sans-serif;
+            font-weight: 700;
+            font-size: 19px;
+            margin: 15px 35px;
+            padding: 7.5px 40px;
+            width: 160px;
+            border-radius: 50px;
+            height: 35px;
+            color: #fff;
+            cursor: pointer;
+            backface-visibility: hidden;
+            transition: all .3s;
+        
+            @media screen and (max-width: 768px) {
+              min-width: 170px;
+              margin: 15px 25px;
+            }
+        
+            @media screen and (max-width: 576px) {
+              min-width: inherit;
+              margin: 0;
+              margin-bottom: 16px;
+              width: 100%;
+              max-width: 300px;
+        
+              &:last-child {
+                margin-bottom: 0;
+              }
+            }
+            @media screen and (min-width: 768px) {
+                &:hover {
+                  transform: translateY(-5px);
+                }
+              }
+        }
+        
 
 
+
+          .card .profile-card__button2 {
+            background: linear-gradient(45deg, #d5135a, #f05924);
+            box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.35);
+            }
+            .card profile-card__button :hover {
+              box-shadow: 0px 7px 30px rgba(223, 45, 70, 0.75);
+            }
+
+
+
+            .card .education-card__button2 {
+              background: none;
+              border: none;
+              font-family: 'Quicksand', sans-serif;
+              font-weight: 700;
+              font-size: 19px;
+              margin: 15px 35px;
+              padding: 7.5px 40px;
+              width: 215px;
+              border-radius: 50px;
+              height: 35px;
+              color: #fff;
+              cursor: pointer;
+              backface-visibility: hidden;
+              transition: all .3s;
+          
+              @media screen and (max-width: 768px) {
+                min-width: 170px;
+                margin: 15px 25px;
+              }
+          
+              @media screen and (max-width: 576px) {
+                min-width: inherit;
+                margin: 0;
+                margin-bottom: 16px;
+                width: 100%;
+                max-width: 300px;
+          
+                &:last-child {
+                  margin-bottom: 0;
+                }
+              }
+              @media screen and (min-width: 768px) {
+                  &:hover {
+                    transform: translateY(-5px);
+                  }
+                }
+          }
+          
+  
+  
+  
+            .card .education-card__button2 {
+              background: linear-gradient(45deg, #d5135a, #f05924);
+              box-shadow: 0px 4px 30px rgba(223, 45, 70, 0.35);
+              }
+              .card education-card__button :hover {
+                box-shadow: 0px 7px 30px rgba(223, 45, 70, 0.75);
+              }
 
 
 

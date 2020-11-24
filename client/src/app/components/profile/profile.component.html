@@ -1,14 +1,20 @@
 
 
 
-<div class="wrapper">
-   <div class="profile-card">
+<div class="row">
+
+
+   <div class="column1">
+     <div class="card">
+
+      <p>hi this is akshat</p>
+      <div class="profile-card">
       <div class="profile-card__img">
          <img src="{{profile}}" style="width:100%;height:100%;border-radius: 50%;" />
       </div>
       <div class="profile-card__cnt js-profile-cnt">
          <div class="profile-card__name">{{name}}</div>
-         <div class="profile-card__txt">Front-end Developer from <strong>Mumbai</strong></div>
+         <div class="profile-card__txt">{{about}} <strong>{{city}}</strong></div>
          <div class="profile-card-loc">
             <span class="profile-card-loc__icon">
               <!-- <svg class="icon"><use xlink:href="#icon-location"></use></svg> -->
@@ -16,61 +22,135 @@
             </span>
     
             <span class="profile-card-loc__txt">
-              Maharashtra, India
+              {{state}}
             </span>
           </div>
          
-          
-      </div>
 
-      <div class="profile-card-ctr">
 
-         <div class="profile-card-inf">
-            <div class="profile-card-inf__item">
-              <div class="profile-card-inf__title">{{connections.length}}</div>
-              <div class="profile-card-inf__txt">Connections</div>
-            </div>
-    
-            <div class="profile-card-inf__item">
-               <div class="profile-card-inf__title">{{posts.length}}</div>
-               <div class="profile-card-inf__txt">Posts</div>
-             </div>
-         <button class= "profile-card__button1 button--blue" style="margin-left: 30px;" (click)="onUpdatePic()" *ngIf="self()">
+
+          <div class="profile-card-ctr">
+
+            <div class="profile-card-inf">
+               <div class="profile-card-inf__item">
+                 <div class="profile-card-inf__title">{{connections.length}}</div>
+                 <div class="profile-card-inf__txt">Connections</div>
+               </div>
+       
+               <div class="profile-card-inf__item">
+                  <div class="profile-card-inf__title">{{posts.length}}</div>
+                  <div class="profile-card-inf__txt">Posts</div>
+                </div>
+            
+           
+         </div>
+         <button class= "profile-card__button1 button--blue" style="margin-left: 30px;"  (click)="open(content)" *ngIf="self()">
             Update Profile Picture
          </button>
-         <button class= "profile-card__button2 button--orange" style="margin-left: 30px;" (click)="onAddSkill()" *ngIf="self()">
-            Add skill
-         </button>
-         <button class= "profile-card__button2 button--orange" style="margin-left: 30px;" (click)="onAddEd()" *ngIf="self()">
-            Add Edu
-         </button>
-         <div *ngFor="let skill of skills">
-            Skill: {{skill.skill.name}}<br>
-            Project url:{{skill.skill.project_url}}
-         </div>
-         <br>
-         <div *ngFor="let edu of education">
-            Edu: {{edu.studies.study}}<br>
-            University name:{{edu.studies.uni_name}}
-         </div>
          
          <br>
-         <!-- non connected users start-->
-         <div *ngFor="let user of all_users">
-            Non connected users: {{user.name}}
-         </div>
-          <!-- non connected users end-->
+         
          <button style="margin-left: 30px;" (click)="Connect()" *ngIf="(!self() && !connected()  && !authService.isOrg())" #content>
             Connect
          </button>
          <button style="margin-left: 30px;" (click)="Remove()" *ngIf="(!self() && connected() && !authService.isOrg())" #content>
             Remove
          </button>
-        
       </div>
+     </div>
+   </div>
+     </div>
+     <div class="column3">
+      <div class="card">
+
+         <button class= "profile-card__button2 button--orange" style="margin-left: 30px;" (click)="onAddSkill()" *ngIf="self()">
+            <p style="text-align: center;">Add skill</p>
+         </button>
+         
+         <div class="skillcard" *ngFor="let skill of skills">
+           <h1>Skill: {{skill.skill.name}}</h1> <br>
+           <p>Project url:{{skill.skill.project_url}}</p>
+           
+
+           
+         </div>
+         <hr> 
+         <button class= "education-card__button2 button--orange" style="margin-left: 30px;" (click)="onAddEd()" *ngIf="self()">
+            Add education
+         </button>
+         <div class="educationcard" *ngFor="let edu of education">
+            <h1>Edu: {{edu.studies.study}}</h1><br>
+            <p>University name:{{edu.studies.uni_name}}</p> 
+         </div>
+
+      </div>
+    </div>
+
+   </div>
+
+   <div class="column2">
+      <div class="card">Recommendations
+
+            <!-- non connected users start-->
+         <div *ngFor="let user of all_users">
+          <a [routerLink]="['/profile/',user._id]">{{user.name}}</a>  
+          {{user._id}}
+         </div>
+          <!-- non connected users end-->
+
+
+      </div>
+    </div>
+
+
+
+ </div>
     
 
 
+
+ <!-- modal -->
+
+ <ng-template #content let-modal> 
+   <div class="modal-header"> 
+       <h4 class="modal-title" 
+           id="modal-basic-title"> 
+           Update profile photo
+       </h4> 
+       <button type="button" class="close"
+               aria-label="Close" (click)= 
+               "modal.dismiss('Cross click')">  
+           <span aria-hidden="true"> 
+               × 
+           </span> 
+       </button> 
+   </div> 
+   <div class="modal-body"> 
+       <form> 
+         <div class="card">
+           <img src="{{profile}}" alt="Avatar" style="width:100%">
+           <div class="container">
+             <h4><b>{{name}}</b></h4>
+             <form (submit)="onUpdatePic()">
+               <div className="btn #64b5f6 blue darken-1">
+                <span>Upload Image</span>
+                <input type="file" (change)="onFileSelected($event)" class="form-control" name="image"/>
+             </div>
+             <input type="submit" class="btn btn-primary" value="Post">
+             </form>
+           </div>
+         </div>
+       </form> 
+   </div> 
+   <!-- <div class="modal-footer">  -->
+       <!-- <button type="button" 
+           class="btn btn-outline-dark" 
+           (click)="modal.close('Save click')"> 
+           Save 
+       </button>  -->
+       
+   <!-- </div>  -->
+ </ng-template> 
 
 
    
