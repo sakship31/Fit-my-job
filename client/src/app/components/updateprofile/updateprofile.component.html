@@ -1,4 +1,4 @@
-<p>updateprofile works!</p>
+<!-- <p>updateprofile works!</p>
 <h2 class="page-header">Update Profile</h2>
 <button style="margin-left: 30px;" (click)="onUpdateProfilePic()">
    Update Profile Picture
@@ -18,5 +18,23 @@
    <input type="text" class="form-control" [(ngModel)]="website_link" name="website_link">
  </div>
   <input type="submit" class="btn btn-primary" value="Update">
-</form>
+</form> -->
 
+<body>
+  <div class="updateprofile-form">
+    <h1>Update Profile</h1>
+    <br>
+    <form (submit)="onProfileSubmit()">
+      <input type="text" class="input-box" placeholder="About" [(ngModel)]="about" name="about">
+      <br><br><br>
+      <input type="text" class="input-box" placeholder="Location" [(ngModel)]="location" name="location">
+      <br><br><br>
+      <input type="text" class="input-box" placeholder="Website Link" [(ngModel)]="website_link" name="website_link">   
+      <!-- <button type="button" class="signup-btn">Update</button> -->
+      <input type="submit" class="signup-btn" value="Update">
+      <hr>
+      <p class="or"><b>OR</b></p>
+      <button (click)="onUpdateProfilePic()" type="button" class="updatepic-btn">Update Profile Picture</button>
+    </form>
+  </div>
+</body>

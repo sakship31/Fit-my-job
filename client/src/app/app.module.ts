@@ -25,9 +25,11 @@ import { JoblistComponent } from './components/joblist/joblist.component';
 import { JobdetailComponent } from './components/jobdetail/jobdetail.component';
 import { AddeduComponent } from './components/addedu/addedu.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoadingComponent } from './components/loading/loading.component';
 
 const appRoutes: Routes = [
   { path: '', component: ChooseComponent },
+  { path: 'loading/:id', component: LoadingComponent },
   { path: 'createjob', component: CreatejobComponent },
   { path: 'jobs', component: JoblistComponent },
   { path: 'jobdetail/:id', component: JobdetailComponent },
@@ -60,7 +62,8 @@ const appRoutes: Routes = [
     CreatejobComponent,
     JoblistComponent,
     JobdetailComponent,
-    AddeduComponent
+    AddeduComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

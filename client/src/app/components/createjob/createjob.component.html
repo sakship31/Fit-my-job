@@ -1,9 +1,7 @@
-<p>createjob works!</p>
+<!-- <p>createjob works!</p>
 <p>updateprofile works!</p>
 <h2 class="page-header">Create Job</h2>
-<!-- <button style="margin-left: 30px;" (click)="onUpdateProfilePic()">
-   Update Profile Picture
-</button> -->
+
 
 <form (submit)="createJob()">
   <div class="form-group">
@@ -37,4 +35,30 @@
   <input type="submit" class="btn btn-primary" value="Create">
 </form>
 
+ -->
 
+ <body>
+  <div class="createjob-form">
+    <h1>Create Job</h1>
+    <form (submit)="createJob()">
+      <br>
+      <input type="text" class="input-box" placeholder="Job Title" [(ngModel)]="job_title" name="job_title" required>
+      <br><br>
+      <input type="text" class="input-box" placeholder="Job Description" [(ngModel)]="job_description" name="job_description" required>
+      <br><br>
+      <input type="text" class="input-box" placeholder="Skills" [(ngModel)]="skills_required" name="skills_required" required>
+      <br><br>
+      <input type="text" class="input-box" placeholder="Location" [(ngModel)]="location" name="location" required>
+      <br><br>
+      <input type="date" class="input-box" placeholder="Start Date" [(ngModel)]="start_date" name="start_date" required>
+      <br><br>
+      <input type="date" class="input-box" placeholder="End Date" [(ngModel)]="end_date" name="end_date" required>
+      <br><br>
+      <input type="date" class="input-box" placeholder="Apply By" [(ngModel)]="apply_by" name="apply_by" required>
+      <br><br>
+  
+      <!-- <button type="button" class="signup-btn">Create</button> -->
+      <input type="submit" class="signup-btn" value="Create">
+    </form>
+  </div>
+</body>

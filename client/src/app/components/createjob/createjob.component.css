@@ -1,0 +1,63 @@
+*{
+   margin: 0;
+   padding: 0;
+   font-family: sans-serif;
+}
+
+
+.createjob-form{
+   width: 375px;
+   padding: 20px;
+   margin: 8% auto 0;
+   text-align: center;
+   background: #fff;
+   /* box-shadow: 0 0 3px 0 rgba(0,0,0,0.3); */
+   margin-top: 40px;
+   padding-top: 5px;
+}
+
+.createjob-form h1{
+   color: #1c8adb;
+   margin-bottom: 30px;
+   font-size: 2.5rem;
+}
+
+.input-box{
+   border-radius: 20px;
+   padding: 10px;
+   margin: 10px 0;
+   width: 100%;
+   outline: none;
+   border: 1px solid  #999;
+   
+}
+
+button{
+   color: #fff;
+   width: 40%;
+   padding: 10px;
+   border-radius: 20px;
+   font-size: 15px;
+   margin: 10px 0;
+   border: none;
+   cursor: pointer;
+   outline: none;
+}
+
+.signup-btn{
+   background-color: #1c8adb;
+
+   color: #fff;
+   width: 40%;
+   padding: 10px;
+   border-radius: 20px;
+   font-size: 15px;
+   margin: 10px 0;
+   border: none;
+   cursor: pointer;
+   outline: none;
+}
+
+a{
+   text-decoration: none;
+}

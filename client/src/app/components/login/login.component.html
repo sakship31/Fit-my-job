@@ -1,4 +1,4 @@
-<h2 class="page-header">Login</h2>
+<!-- <h2 class="page-header">Login</h2>
 <form (submit)="onLoginSubmit()">
   <div class="form-group">
     <label>Email</label>
@@ -9,4 +9,17 @@
     <input type="password" class="form-control" [(ngModel)]="password" name="password">
   </div>
   <input type="submit" class="btn btn-primary" value="Login">
-</form>
+</form> -->
+
+<div class="rectangle"><p class="text">Don't miss your next opportunity. Sign in to stay updated on your professional world.</p></div>
+<div class="login-form">
+  <h1>Login</h1>
+  <br><br>
+  <form (submit)="onLoginSubmit()">
+    <input type="email" class="input-box" placeholder="Email" [(ngModel)]="email" name="email">
+    <br><br><br>
+    <input type="password" class="input-box" placeholder="Password" [(ngModel)]="password" name="password">   
+    <!-- <button type="button" class="signup-btn">Login</button> -->
+    <input type="submit" class="btn btn-primary" value="Login">
+  </form>
+</div>

@@ -1,4 +1,4 @@
-<h2 class="page-header">Register</h2>
+<!-- <h2 class="page-header">Register</h2>
 <form (submit)="onRegisterSubmit()">
   <div class="form-group">
     <label>Name</label>
@@ -25,4 +25,27 @@
     <input type="text" [(ngModel)]="state" name="state" class="form-control" >
   </div>
   <input type="submit" class="btn btn-primary" value="Submit">
-</form>
+</form> -->
+
+<div class="rectangle"><p class="text">Make the most of your professional life</p></div>
+<div class="sign-up-form">
+  <h1>Sign Up Now</h1>
+  <form (submit)="onRegisterSubmit()">
+    <br>
+    <input type="text" class="input-box" placeholder="Your Name" [(ngModel)]="name" name="name">
+    <br><br>
+    <input type="email" class="input-box" placeholder="Email" [(ngModel)]="email" name="email">
+    <br><br>
+    <input type="password" class="input-box" placeholder="Password" [(ngModel)]="password" name="password">
+    <br><br>
+    <input type="text" class="input-box" placeholder="About" [(ngModel)]="about" name="about" *ngIf="(!authService.isOrg())">
+    <br><br>
+    <input type="text" class="input-box" placeholder="City" [(ngModel)]="city" name="city" *ngIf="(!authService.isOrg())">
+    <br><br>
+    <input type="text" class="input-box" placeholder="State" [(ngModel)]="state" name="state" *ngIf="(!authService.isOrg())">
+    <br><br>
+    <p>By clicking on register you are agreeing to terms and conditions</p>
+    <!-- <button type="button" class="signup-btn">Register</button> -->
+    <input type="submit" class="btn btn-primary" value="Register">
+  </form>
+</div>
