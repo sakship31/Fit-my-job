@@ -89,12 +89,17 @@
    </div>
 
    <div class="column2">
-      <div class="card">Recommendations
+      <div class="card">
+         <h1> People Also Viewed</h1>
 
             <!-- non connected users start-->
-         <div *ngFor="let user of all_users">
-          <a [routerLink]="['/loading/',user._id]">{{user.name}}</a>  
-          {{user._id}}
+         <div class="recomendation">
+            <div *ngFor="let user of all_users">
+               <img src="{{profile}}" style="width:80px;height:80px;border-radius: 50%; padding: 10px;" />
+               <a [routerLink]="['/loading/',user._id]">{{user.name}}</a>  
+               <hr style="width:80%;margin-right:0"> 
+            </div>
+            
          </div>
           <!-- non connected users end-->
 
@@ -104,14 +109,13 @@
 
 
 
- </div>
     
 
 
 
  <!-- modal -->
 
- <ng-template #content let-modal> 
+ <ng-template #content let-modal > 
    <div class="modal-header"> 
        <h4 class="modal-title" 
            id="modal-basic-title"> 
@@ -125,7 +129,7 @@
            </span> 
        </button> 
    </div> 
-   <div class="modal-body"> 
+   <div class="modal-body" > 
        <form> 
          <div class="card">
            <img src="{{profile}}" alt="Avatar" style="width:100%">

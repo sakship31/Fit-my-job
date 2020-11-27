@@ -55,6 +55,28 @@ body {
   width: 25%;
 }
 
+.column2 .card h1{
+  font-size: 1.3em;
+  padding-left: 20px;
+  padding-top: 5px;
+}
+
+.column2 .card .recomendation{
+  padding-top: 10px;
+  background-color:#fff;
+  border-radius: 12px;
+}
+
+
+.column2 .card .recomendation a{
+  padding-left: 15px;
+  font-size: 1em;
+
+}
+
+
+
+
 .column3{
   float: left;
   margin-top: 440px;
@@ -540,8 +562,6 @@ a, a:hover {
               .card education-card__button :hover {
                 box-shadow: 0px 7px 30px rgba(223, 45, 70, 0.75);
               }
-
-
 
 
 

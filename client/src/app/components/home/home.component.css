@@ -16,11 +16,15 @@
   
   }
 .column{
-    padding: 0 0px 0 0px;
-    margin-top: -60px;
+    padding: 0 0px 30 0;
+    margin-top: -40px;
+    margin-left: 10px;
     background: #fff;
     border-radius: 12px;
+    height: 300px;
 }
+
+
   
 .column1 {
     float: left;
@@ -29,8 +33,9 @@
   }
 .column2 {
     float: left;
-    margin-top: 20px;
-    padding: 0 10px 0 60px;
+    margin-top: 0px;
+    padding: 0 10px 0 10px;
+    
   }
 
   
@@ -79,24 +84,25 @@ body {
   }
   
   .writepost{
+    margin-top: -40px;
     background: #fff;
-    min-height: 80px;
+    min-height: 40px;
     border-radius: 12px;
 
   }
 
-  .addpost{
-      width: 90%;
+
+  .column2 .card .writepost .addpost{
+      width: 100%;
       height: 100%;
-      margin-left: 30px;
-    padding: 0 20px ;
-    min-height: 40px;
-    background: #fff;
-    border:2px #323232;
+      min-height: 40px;
+      background: #fff;
+      border-radius: 12px;
+      border-color: #c0c0c0;
+
     
     
     
-    border-radius: 12px;
 
   }
   .icon1{

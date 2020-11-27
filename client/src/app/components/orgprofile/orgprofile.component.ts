@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import {ValidateService} from '../../services/validate.service';
 import { ActivatedRoute } from '@angular/router';
 //import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import {NgbModal,ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+const {URL,UPLOAD_PRESET,CLOUD_NAME}=require('../../config/keys') 
 
 @Component({
   selector: 'app-orgprofile',
@@ -32,6 +34,7 @@ export class OrgprofileComponent implements OnInit {
     private validateService:ValidateService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -119,5 +122,12 @@ export class OrgprofileComponent implements OnInit {
       );
 }
 
+ // Modal
+ 
+
+
+
+
+myImage:String = "assets/images/location.png";  
 
 }

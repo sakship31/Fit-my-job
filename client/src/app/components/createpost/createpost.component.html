@@ -21,19 +21,42 @@
      </button>
 
 </div> -->
-<h2 class="page-header">Create post</h2>
-<form (submit)="onCreatePost()">
+<!-- <h2 class="page-header">Create post</h2> -->
+<!-- <form (submit)="onCreatePost()">
   <div class="form-group">
     <label>Caption</label>
-    <input type="text" class="form-control" [(ngModel)]="caption" name="caption">
+    <br>
+      <input type="text" class="input-box" placeholder="Caption" [(ngModel)]="caption" name="caption" required>
+      <br>
   </div>
-  <!-- <div class="form-group">
+  <div class="form-group">
     <label>Password</label>
     <input type="password" class="form-control" [(ngModel)]="password" name="password">
-  </div> -->
+  </div>
   <div className="btn #64b5f6 blue darken-1">
    <span>Upload Image</span>
    <input type="file" (change)="onFileSelected($event)" class="form-control" name="image"/>
 </div>
   <input type="submit" class="btn btn-primary" value="Post">
-</form>
+</form> -->
+
+<body>
+  <div class="createjob-form">
+    <h1>Create post</h1>
+    <form (submit)="onCreatePost()">
+      <br>
+      <textarea type="text" class="input-box" style="width: 340px" rows="3" padding="10px" placeholder="Caption" [(ngModel)]="caption" name="caption" required>
+      </textarea>
+      <br><br>
+      
+      <div className="btn #64b5f6 blue darken-1" style="align-content: center;">
+        <span>Upload Image</span>
+        <input type="file" (change)="onFileSelected($event)" class="form-control" name="image"/>
+        
+     </div>
+  
+      <!-- <button type="button" class="signup-btn">Create</button> -->
+      <input type="submit" class="btn btn-primary" value="Post">
+    </form>
+  </div>
+</body>

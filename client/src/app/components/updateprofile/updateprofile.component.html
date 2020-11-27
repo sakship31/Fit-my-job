@@ -34,7 +34,65 @@
       <input type="submit" class="signup-btn" value="Update">
       <hr>
       <p class="or"><b>OR</b></p>
-      <button (click)="onUpdateProfilePic()" type="button" class="updatepic-btn">Update Profile Picture</button>
+      <button (click)="open(content)" type="button" class="updatepic-btn">Update Profile Picture</button>
     </form>
   </div>
 </body>
+
+
+
+
+
+
+
+
+
+
+
+
+<ng-template #content let-modal> 
+  <div class="modal-header"> 
+      <h4 class="modal-title" 
+          id="modal-basic-title"> 
+          Update profile photo
+      </h4> 
+      <button type="button" class="close"
+              aria-label="Close" (click)= 
+              "modal.dismiss('Cross click')"> 
+
+          <span aria-hidden="true"> 
+              × 
+          </span> 
+      </button> 
+  </div> 
+  <div class="modal-body"> 
+      <form> 
+        <div class="card">
+          <img src="{{profile}}" alt="Avatar" style="width:100%">
+          <div class="container">
+            <h4><b>John Doe</b></h4>
+            <form (submit)="onUpdatePic()">
+              <div className="btn #64b5f6 blue darken-1">
+               <span>Upload Image</span>
+               <input type="file" (change)="onFileSelected($event)" class="form-control" name="image"/>
+            </div>
+              
+            </form>
+          </div>
+        </div>
+      </form> 
+  </div> 
+  <div class="modal-footer"> 
+      <!-- <button type="button" 
+          class="btn btn-outline-dark" 
+          (click)="modal.close('Save click')"> 
+          Save 
+      </button>  -->
+      <input type="submit" class="btn btn-primary" value="Post">
+  </div> 
+</ng-template> 
+
+<button class="btn btn-lg btn-outline-primary" 
+  (click)="open(content)"> 
+  Update profile photo 
+</button> 
