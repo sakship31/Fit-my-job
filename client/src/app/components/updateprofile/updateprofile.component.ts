@@ -22,6 +22,7 @@ export class UpdateprofileComponent implements OnInit {
   image:File=null
   profile = "";
   id="";
+  name = "";
 
   constructor(
     private authService: AuthService,
@@ -42,6 +43,7 @@ export class UpdateprofileComponent implements OnInit {
         // this.jobs = res.jobs;
         // console.log("profile=",this.profile)
         this.profile = res.org[0].pic;
+        this.name = res.org[0].name;
       }, (error) => {
         console.log(error)
       }

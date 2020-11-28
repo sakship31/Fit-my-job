@@ -50,10 +50,10 @@
          
          <br>
          
-         <button style="margin-left: 30px;" (click)="Connect()" *ngIf="(!self() && !connected()  && !authService.isOrg())" #content>
+         <button class= "profile-card__button1 button--blue" style="margin-left: 30px;" (click)="Connect()" *ngIf="(!self() && !connected()  && !authService.isOrg())" #content>
             Connect
          </button>
-         <button style="margin-left: 30px;" (click)="Remove()" *ngIf="(!self() && connected() && !authService.isOrg())" #content>
+         <button class= "profile-card__button1 button--blue" style="margin-left: 30px;" (click)="Remove()" *ngIf="(!self() && connected() && !authService.isOrg())" #content>
             Remove
          </button>
       </div>
@@ -62,11 +62,10 @@
      </div>
      <div class="column3">
       <div class="card">
-
+         
          <button class= "profile-card__button2 button--orange" style="margin-left: 30px;" (click)="onAddSkill()" *ngIf="self()">
             <p style="text-align: center;">Add skill</p>
          </button>
-         
          <div class="skillcard" *ngFor="let skill of skills">
            <h1>Skill: {{skill.skill.name}}</h1> <br>
            <p>Project url:{{skill.skill.project_url}}</p>
@@ -95,7 +94,7 @@
             <!-- non connected users start-->
          <div class="recomendation">
             <div *ngFor="let user of all_users">
-               <img src="{{profile}}" style="width:80px;height:80px;border-radius: 50%; padding: 10px;" />
+               <img src="{{user.pic}}" style="width:80px;height:80px;border-radius: 50%; padding: 10px;" />
                <a [routerLink]="['/loading/',user._id]">{{user.name}}</a>  
                <hr style="width:80%;margin-right:0"> 
             </div>
