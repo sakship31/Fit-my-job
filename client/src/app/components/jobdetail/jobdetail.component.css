@@ -1,0 +1,40 @@
+.form{
+   width: 95%;
+   height: 500px;
+   padding: 20px;
+   margin: 8% auto 0;
+   background: #fff;
+   box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);
+   border-radius: 10px;
+   margin-top: 40px;
+   padding-top: 5px;
+   align-content: center;
+   
+}
+
+
+.content{
+   letter-spacing: 0.2px;
+   color: #8a8a8a;
+}
+
+.info{
+   color: black;
+}
+
+
+button{
+   color:  white;
+   width: 10%;
+   background-color: #1c8adb;
+   padding: 10px;
+   border-radius: 20px;
+   font-size: 15px;
+   margin: 10px 0;
+   border: none;
+   cursor: pointer;
+   outline: none;
+   margin-top: 15px;
+   margin-left: 550px;
+   /* align-content: center; */
+}

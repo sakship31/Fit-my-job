@@ -38,12 +38,14 @@
     <br><br>
     <input type="password" class="input-box" placeholder="Password" [(ngModel)]="password" name="password">
     <br><br>
-    <input type="text" class="input-box" placeholder="About" [(ngModel)]="about" name="about" *ngIf="(!authService.isOrg())">
+    <div *ngIf="(!authService.isOrg())">
+    <input type="text" class="input-box" placeholder="About" [(ngModel)]="about" name="about">
+    <br ><br>
+    <input type="text" class="input-box" placeholder="City" [(ngModel)]="city" name="city">
+    <br ><br>
+    <input type="text" class="input-box" placeholder="State" [(ngModel)]="state" name="state">
     <br><br>
-    <input type="text" class="input-box" placeholder="City" [(ngModel)]="city" name="city" *ngIf="(!authService.isOrg())">
-    <br><br>
-    <input type="text" class="input-box" placeholder="State" [(ngModel)]="state" name="state" *ngIf="(!authService.isOrg())">
-    <br><br>
+    </div>
     <p>By clicking on register you are agreeing to terms and conditions</p>
     <!-- <button type="button" class="signup-btn">Register</button> -->
     <input type="submit" class="btn btn-primary" value="Register">

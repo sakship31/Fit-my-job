@@ -1,4 +1,4 @@
-<p>jobdetail works!</p>
+<!-- <p>jobdetail works!</p>
 
 <div >
    <img style="padding:7px; width:50px;height:50px;border-radius:30px;float:left;"
@@ -35,4 +35,58 @@
       <button style="margin-left: 30px;" (click)="Apply(job._id)" disabled>
         Applied
       </button>
-   </div>
+   </div> -->
+
+<!-- <p>jobdetail works!</p> -->
+<body class="form">
+   
+
+   <div >
+      <img style="padding:7px; width:50px;height:50px;border-radius:30px;float:left;"
+             src="{{user.pic}}"/>
+          </div>
+          <h5 style="padding-left:3px;padding-top:12px;font-size:20px"><a [routerLink]="['/jobdetail',job._id]">{{job.job_title}}</a></h5>
+          <div style="padding-left:43px;padding-top:12px;font-size:15px"><span class="content"><i class="fa fa-user-o" aria-hidden="true"></i>
+            NAME :</span><a
+            [routerLink]="['/profile/org/',user._id]">  {{user.name}}</a></div>
+          <div style="padding-left:43px;padding-top:12px;font-size:15px"><span class="content"><i class="fa fa-info-circle" aria-hidden="true"></i>
+            ABOUT :<span class="info">  {{user.about}}</span></span></div>
+          <div style="padding-left:43px;padding-top:12px;font-size:15px"><span class="content"><i class="fa fa-internet-explorer" aria-hidden="true"></i>
+            WEBSITE :<span class="info">  {{user.website_link}}</span></span></div>
+          <div style="padding-left:43px;padding-top:12px;font-size:15px"><span class="content"><i class="fa fa-map-marker" aria-hidden="true"></i>
+            ORG LOCATION : <span class="info">{{user.location}}</span></span></div>
+          <div style="padding-left:43px;padding-top:12px;font-size:15px"><span class="content"><i class="fa fa-hourglass-end" aria-hidden="true"></i>
+            APPLY BY :<span class="info">  {{Slice(job.apply_by)}}</span></span></div>
+          <div style="padding-left:43px;padding-top:12px;font-size:15px"><span class="content"><i class="fa fa-graduation-cap" aria-hidden="true"></i>
+            SKILLS : <span class="info">{{job.skills_required}}</span></span></div>
+          <div style="padding-left:43px;padding-top:12px;font-size:15px"><span class="content"><i class="fa fa-briefcase" aria-hidden="true"></i>
+            JOB DESCRIPTION : <span class="info">{{job.job_description}}</span></span></div>
+          <div style="padding-left:43px;padding-top:12px;font-size:15px"><span class="content"><i class="fa fa-play-circle-o" aria-hidden="true"></i>
+            START DATE : <span class="info">{{Slice(job.start_date)}}</span></span></div>
+          <div style="padding-left:43px;padding-top:12px;font-size:15px"><span class="content"><i class="fa fa-pause-circle-o" aria-hidden="true"></i>
+            END DATE : <span class="info">{{Slice(job.end_date)}}</span></span></div>
+          <div style="padding-left:43px;padding-top:12px;font-size:15px"><span class="content"><i class="fa fa-globe" aria-hidden="true"></i>
+            JOB LOCATION :  <span class="info">{{job.location}}</span></span></div>
+      <div *ngIf="authService.isOrg()">
+         <h3>Applicants</h3>
+         <div *ngFor="let applicant of applicants">
+            <div >
+               <img style="padding:7px; width:50px;height:50px;border-radius:30px;float:left;"
+                      src="{{applicant.pic}}"/>
+                   </div>
+                   <a [routerLink]="['/profile/',applicant._id]">{{applicant.name}}</a>
+         </div>
+      </div>
+      <div *ngIf="!authService.isOrg() && !applied()">
+         <button  (click)="Apply(job._id)">
+           Apply
+         </button>
+      </div>
+      <div *ngIf="!authService.isOrg() && applied()" >
+         <button (click)="Apply(job._id)" disabled style="cursor:not-allowed;color:black;background-color: lightgray; ">
+           Applied
+         </button>
+      </div>
+   
+   </body>
+   

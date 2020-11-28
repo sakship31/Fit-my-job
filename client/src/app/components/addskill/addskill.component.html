@@ -1,4 +1,4 @@
-<p>addskill works!</p>
+<!-- <p>addskill works!</p>
 <h2 class="page-header">Add Skill</h2>
 <form (submit)="onAddSkill()">
   <div class="form-group">
@@ -11,4 +11,17 @@
  </div>
   <input type="submit" class="btn btn-primary" value="Add skill">
 </form>
+ -->
 
+
+ <div class="skill-form">
+  <h1>Add Skill</h1>
+  <br><br>
+  <form (submit)="onAddSkill()">
+    <input type="text" class="input-box" placeholder="Skill Name" [(ngModel)]="name" name="name">
+    <br><br><br>
+    <input type="text" class="input-box" placeholder="Project URL" [(ngModel)]="url" name="url">   
+    <!-- <button type="button" class="signup-btn">Login</button> -->
+    <br><br><input type="submit" class="btn btn-primary" value="Add Skill">
+  </form>
+</div>

@@ -44,9 +44,9 @@
    border: 1px solid  #999;
 }
 
-button{
+.btn{
    color: #fff;
-   width: 100%;
+   width: 50%;
    padding: 10px;
    border-radius: 20px;
    font-size: 15px;

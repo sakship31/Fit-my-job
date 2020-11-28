@@ -58,11 +58,12 @@
               <img src="{{post.pic}}"/>
           </div>
           <div class="card-content input-field">
-          
-                             <i class="material-icons"  style="color:blue;cursor: pointer;" (click)="unlike(post)" *ngIf="liked(post)">thumb_up</i>
+            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+            <!-- <i class="material-icons">add</i> -->
+                             <!-- <i class="material-icons"  style="color:blue;cursor: pointer;" (click)="unlike(post)" *ngIf="liked(post)">thumb_up</i>
                            
                              <i class="material-icons"  style="color:black ;cursor: pointer;" (click)="like(post)" *ngIf="!liked(post)">thumb_up</i>
-                           
+                            -->
           <br/><h6>{{post.likes.length}} likes<br/></h6>
              <h6>{{post.caption}}</h6>   
  
