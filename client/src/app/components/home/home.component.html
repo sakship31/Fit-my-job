@@ -2,6 +2,7 @@
 
 <div class="home">
   
+  
     <div class="column1">
       <div class="card" >
         <div class="profile-card">
@@ -13,7 +14,7 @@
              <div class="profile-card__txt">Front-end Developer from <strong>Mumbai</strong></div>
              <div class="profile-card-loc">
                 <span class="profile-card-loc__icon">
-                  <!-- <svg class="icon"><use xlink:href="#icon-location"></use></svg> -->
+                  <svg class="icon"><use xlink:href="#icon-location"></use></svg>
                   <img class="icon"  [src]=myImage >
                 </span>
         
@@ -58,12 +59,18 @@
               <img src="{{post.pic}}"/>
           </div>
           <div class="card-content input-field">
-            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-            <!-- <i class="material-icons">add</i> -->
-                             <!-- <i class="material-icons"  style="color:blue;cursor: pointer;" (click)="unlike(post)" *ngIf="liked(post)">thumb_up</i>
+            
+            <!-- <i class="fa fa-thumbs-up" aria-hidden="true" style="font-size:48px;"></i> -->
+            <!-- <i class="material-icons"></i>   -->
+            <!-- <button class="material-icons" style="color:blue;cursor: pointer;" (click)="unlike(post)" *ngIf="liked(post)" >
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </button> -->
+                              <!-- <i class="material-icons" svgIcon="thumb-up" style="color:blue;cursor: pointer;" (click)="unlike(post)" *ngIf="liked(post)"></i>
                            
-                             <i class="material-icons"  style="color:black ;cursor: pointer;" (click)="like(post)" *ngIf="!liked(post)">thumb_up</i>
-                            -->
+                             <i class="material-icons" svgIcon="thumb-up" style="color:black ;cursor: pointer;" (click)="like(post)" *ngIf="!liked(post)"></i> -->
+                             <img [src]=thumbsUp style=" width: 30px; height: 30px; color:blue;cursor: pointer;" (click)="unlike(post)" *ngIf="liked(post)" />
+                             <img [src]=thumbsUp2 style=" width: 30px; height: 30px; color:black;cursor: pointer;" (click)="like(post)" *ngIf="!liked(post)" /> 
+                                                     
           <br/><h6>{{post.likes.length}} likes<br/></h6>
              <h6>{{post.caption}}</h6>   
  

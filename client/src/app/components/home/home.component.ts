@@ -5,12 +5,15 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import {ValidateService} from '../../services/validate.service';
 import { ActivatedRoute } from '@angular/router';
+// import {MatIconModule} from '@angular/material/icon';
+
 //import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
+  
 })
 export class HomeComponent implements OnInit {
 
@@ -19,7 +22,7 @@ export class HomeComponent implements OnInit {
   toggle = true;
   posts=[]
   user
-
+  
 
   constructor(
     private authService: AuthService,
@@ -91,7 +94,11 @@ export class HomeComponent implements OnInit {
   myImage:String = "assets/images/location.png";  
   writePost:String = "assets/images/write.png";  
   dreamJob:String = "assets/images/linkedIn.png";  
+  likePost:String = "assets/images/like.png";
+  thumbsUp:String = "assets/images/thumbs-up.svg";
+  thumbsUp2:String = "assets/images/thumbs-up-regular.svg";
 
+  
 
 
 }
