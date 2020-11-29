@@ -5,7 +5,6 @@ import axios from 'axios';
 import { Router } from '@angular/router';
 import {ValidateService} from '../../services/validate.service';
 import { ActivatedRoute } from '@angular/router';
-//import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import {NgbModal,ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 const {URL,UPLOAD_PRESET,CLOUD_NAME}=require('../../config/keys') 
 
@@ -30,17 +29,6 @@ export class ProfileComponent implements OnInit {
   all_users=[]
   image:File=null
   pic=""
-  // profile_all = "";
-  // name_all = "";
-  // id_all="";
-  // about_all="";
-  // email_all=""
-  // city_all=""
-  // state_all=""
-  // posts_all = [];
-  // connections_all = [];
-  // skills_all=[];
-  // education_all=[];
   userid=JSON.parse(localStorage.getItem('user'))._id;
   constructor(
     private authService: AuthService,
@@ -52,10 +40,8 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     localStorage.getItem('id_token') ? console.log("") : this.router.navigate(['/login']);
-    console.log("okayyy=",this.userid)
       this.authService.getProfile(this.activatedRoute.snapshot.params.id).subscribe(
         (res) => {
-          console.log("HEY",res)
           this.id=res.user[0]._id._id;
           this.name = res.user[0].name;
           this.profile = res.user[0].pic;
@@ -67,26 +53,13 @@ export class ProfileComponent implements OnInit {
           this.city=res.user[0].city
           this.state=res.user[0].state
           this.email=res.user[0].email
-         ///////////////////////////////////////////////
          this.authService.getProfileAll().subscribe(
           (res) => {
-            console.log("HEY222=",res.users)
             this.all_users=res.users
-            // this.id_all=res.users._id._id;
-            // this.name_all = res.users[0].name;
-            // this.profile_all = res.users[0].pic;
-            // this.connections_all = res.users[0].connections;
-            // this.education_all = res.users[0].education;
-            // this.skills_all=res.users[0].skills;
-            // this.about_all=res.users[0].about
-            // this.city_all=res.users[0].city
-            // this.state_all=res.users[0].state
-            // this.email_all=res.users[0].email
           }, (error) => {
             console.log(error)
           }
         );
-         //////////////////////////////////////////////
         }, (error) => {
           console.log(error)
         }
@@ -127,16 +100,10 @@ export class ProfileComponent implements OnInit {
           this.validateService.updatePic(post,this.authService.isOrg).subscribe(
             (res) => {
               console.log(res)
-              // console.log(res)
-              // this.authService.storeUserData(res.token, res.user);
-              if(localStorage.getItem('isOrg')=='true'){
-                this.router.navigate(['/profile/org/'+res._id]);
-              }
-              else{
-                this.router.navigate(['/profile/'+res._id]);
+         
+                // this.router.navigate(['/profile/'+res._id]);
                 this.modalService.dismissAll();
                 this.ngOnInit();
-              }
             
             }, (error) => {
               console.log(error)

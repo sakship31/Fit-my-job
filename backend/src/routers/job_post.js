@@ -4,8 +4,6 @@ const Org = require('../models/organisation')
 const login_required = require('../middleware/org_login_req')
 const login_required_normal = require('../middleware/login_required')
 const { json } = require('body-parser')
-const multer=require('multer')
-//const sharp=require('sharp')
 const User = require('../models/user')
 
 const app = new express.Router()
@@ -33,10 +31,7 @@ app.post('/createjob',login_required,async (req,res)=>{
 
 //jobs by logged in organisation
 app.get('/joblist', login_required, (req, res) => {
-   //console.log("CONNECTIONS=",req.user.connections)
-   // if postedBy in connections of the requested user
    Job.find({postedBy:req.org})
-   // Post.find({ $and: [{ postedBy: { $in: req.user.connections } }, { postedBy: req.user._id }] })
        .populate("postedBy", "_id name pic")
        .sort('apply_by')
        .then(posts => {
@@ -51,10 +46,7 @@ app.get('/joblist', login_required, (req, res) => {
 
 //jobs by all organisations
 app.get('/jobs', login_required_normal, (req, res) => {
-    //console.log("CONNECTIONS=",req.user.connections)
-    // if postedBy in connections of the requested user
     Job.find({})
-    // Post.find({ $and: [{ postedBy: { $in: req.user.connections } }, { postedBy: req.user._id }] })
         .populate("postedBy", "_id name pic")
         .sort('apply_by')
         .then(posts => {
@@ -70,10 +62,8 @@ app.get('/jobdetail/org/:id', login_required, (req, res) => {
     Job.find({_id:req.params.id})
     .populate("applicants","_id name pic")
     .then((post) => {
-                // console.log("postedBy-",post[0].postedBy)
                 posted_by=post[0].postedBy
                 Org.find({_id:posted_by})
-                // .populate("_id", "_id name email pic")
                 .then((user) => {
                     Org.find({_id:posted_by})
                     return res.send({ post, user })
@@ -88,14 +78,10 @@ app.get('/jobdetail/org/:id', login_required, (req, res) => {
  
  //job detail(for normal user)
 app.get('/jobdetail/:id', login_required_normal, (req, res) => {
-    //console.log("params=aaaaaaaaaaaaaaaaaaaaaa",req.params.id)
     Job.find({_id:req.params.id})
-    //.populate("_id", "job_title job_description start_date end_date skills_required location apply_by postedBy")
     .then((post) => {
-               // console.log("postedBy-",post[0].postedBy)
                 posted_by=post[0].postedBy
                 Org.find({_id:posted_by})
-                // .populate("_id", "_id name email pic")
                 .then((user) => {
                     return res.send({ post, user })
                 }).catch(err => {
@@ -110,7 +96,6 @@ app.get('/jobdetail/:id', login_required_normal, (req, res) => {
 
  app.post('/job/delete',login_required,async (req,res)=>{
     try{
-        //const user=await Task1.findByIdAndDelete(req.params.id)
         const post=await Job.findOneAndDelete({_id:req.body.id,postedBy:req.org._id})
         if(!post){
             return res.status(404).send()
@@ -128,8 +113,6 @@ app.get('/jobdetail/:id', login_required_normal, (req, res) => {
     }, {
         new: true
     })
-        // .populate("comments.postedBy", "_id name pic")
-        // .populate("postedBy", "_id name pic")
         .exec((err, result) => {
             if (err) {
                 return res.status(422).send(err)

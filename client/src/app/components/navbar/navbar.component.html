@@ -15,8 +15,6 @@
     <li style="list-style-type:none;margin-left: 20px;" *ngIf="!authService.loggedIn() && authService.isChosen()"><a
         [routerLink]="['/register']">Register</a></li>
 
-    <li style="list-style-type:none;margin-left: 20px;" *ngIf="authService.loggedIn() && !authService.isOrg()"><a
-        [routerLink]="['/createPost']">Create Post</a></li>
         <li style="list-style-type:none;margin-left: 20px;" *ngIf="authService.loggedIn() && !authService.isOrg()">
           <a [routerLink]="['/loading/',getId()]">Profile</a></li>
     <li style="list-style-type:none;margin-left: 20px;" *ngIf="authService.loggedIn() && !authService.isOrg()"><a
@@ -29,8 +27,6 @@
         <a [routerLink]="['/createjob']">Create JOB</a></li>
           <li style="list-style-type:none;margin-left: 20px;" *ngIf="authService.loggedIn() && authService.isOrg()"><a
             [routerLink]="['/jobs']">My Jobs</a></li>
-      <!-- <li style="list-style-type:none;margin-left: 20px;" *ngIf="authService.loggedIn() && authService.isOrg()"><a
-            [routerLink]="['/home']">Home</a></li> -->
       <li style="list-style-type:none;margin-left: 20px;" *ngIf="authService.loggedIn() && authService.isOrg()"><a
           [routerLink]="['/profile/org/',getId()]">Profile</a></li>
 

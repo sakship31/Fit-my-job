@@ -5,7 +5,6 @@ import axios from 'axios';
 import { Router } from '@angular/router';
 import {ValidateService} from '../../services/validate.service';
 import { ActivatedRoute } from '@angular/router';
-//import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import {NgbModal,ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 const {URL,UPLOAD_PRESET,CLOUD_NAME}=require('../../config/keys') 
 @Component({
@@ -35,13 +34,6 @@ export class UpdateprofileComponent implements OnInit {
   ngOnInit(): void {
     this.authService.getOrgProfile(JSON.parse(localStorage.getItem('user'))._id).subscribe(
       (res) => {
-        console.log("HEY from uodate org profile-",res)
-        // this.website_link=res.org[0].website_link;
-        // this.location=res.org[0].location;
-        // this.about=res.org[0].about;
-        // this.skills=res.user[0].skills;
-        // this.jobs = res.jobs;
-        // console.log("profile=",this.profile)
         this.profile = res.org[0].pic;
         this.name = res.org[0].name;
       }, (error) => {
@@ -52,33 +44,25 @@ export class UpdateprofileComponent implements OnInit {
 
   }
 
+  onFileSelected(event){
+    this.image=<File>event.target.files[0]
+    console.log("dsjskj==",(this.image))
+  }
   
 
   onProfileSubmit(){
-    console.log("helloooooo")
     this.authService.getOrgProfile(JSON.parse(localStorage.getItem('user'))._id).subscribe(
       (res) => {
-        console.log("HEY from uodate org profile-",res)
-        // this.website_link=res.org[0].website_link;
-        // this.location=res.org[0].location;
-        // this.about=res.org[0].about;
-        // this.skills=res.user[0].skills;
-        // this.jobs = res.jobs;
-        // console.log("profile=",this.profile)
         if(this.about==''){
           this.about=res.org[0].about;
         }
-  
           if(this.location==''){
             this.location=res.org[0].location;
           } 
-        
             if(this.website_link==''){
               this.website_link=res.org[0].website_link;
-            }
-            
-            this.profile = res.org[0].pic;
-       
+            }      
+            this.profile = res.org[0].pic;  
         const profile = {
           about: this.about,
           website_link: this.website_link,
@@ -120,18 +104,9 @@ export class UpdateprofileComponent implements OnInit {
             }
             this.validateService.updatePic(post,this.authService.isOrg).subscribe(
               (res) => {
-                console.log(res)
-                // console.log(res)
-                // this.authService.storeUserData(res.token, res.user);
-                if(localStorage.getItem('isOrg')=='true'){
-                  this.router.navigate(['/profile/org/'+res._id]);
-                }
-                else{
-                  this.router.navigate(['/profile/'+res._id]);
                   this.modalService.dismissAll();
-                  this.ngOnInit();
-                }
-              
+                  this.router.navigate(['/profile/org/'+res._id]);   
+                  // this.ngOnInit();
               }, (error) => {
                 console.log(error)
                 this.router.navigate(['/login']);
@@ -164,7 +139,6 @@ export class UpdateprofileComponent implements OnInit {
         (res) => {
           console.log(res)
           this.ngOnInit()
-          // this.router.navigate(['/profile/'+res.user._id]);
         }, (error) => {
           console.log(error)
         }
@@ -177,7 +151,6 @@ export class UpdateprofileComponent implements OnInit {
       (res) => {
         this.ngOnInit()
         console.log("removed")
-        // this.router.navigate(['/profile/'+res.user._id]);
       }, (error) => {
         console.log(error)
       }

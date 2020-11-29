@@ -37,18 +37,6 @@ export class RegisterComponent implements OnInit {
     }
         // Validate Email
         if(!this.validateService.validateEmail(user.email)){
-          // // this.flashMessage.show('Please use a valid email', {cssClass: 'alert-danger', timeout: 3000});
-          // this.ngFlashMessageService.showFlashMessage
-          // ({
-          //   // Array of messages each will be displayed in new line
-          //   messages: ["Please use a valid email"], 
-          //   // Whether the flash can be dismissed by the user defaults to false
-          //   dismissible: true, 
-          //   // Time after which the flash disappears defaults to 2000ms
-          //   timeout: 3000,
-          //   // Type of flash message, it defaults to info and success, warning, danger types can also be used
-          //   type: 'danger'
-          // });
           console.log("enter a valid email address")
           return false;
         }

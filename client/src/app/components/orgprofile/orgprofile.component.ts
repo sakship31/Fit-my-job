@@ -40,7 +40,6 @@ export class OrgprofileComponent implements OnInit {
   ngOnInit(): void {
     localStorage.getItem('id_token') ? console.log("") : this.router.navigate(['/login']);
     console.log(this.userid)
-    // console.log("check=",this.authService.isTypeOrg)
       this.authService.getOrgProfile(this.activatedRoute.snapshot.params.id).subscribe(
         (res) => {
           console.log("HEY",res)
@@ -51,7 +50,6 @@ export class OrgprofileComponent implements OnInit {
           this.website_link=res.org[0].website_link;
           this.location=res.org[0].location;
           this.about=res.org[0].about;
-          // this.skills=res.user[0].skills;
           this.jobs = res.jobs;
           console.log("profile=",this.profile)
           
@@ -59,9 +57,6 @@ export class OrgprofileComponent implements OnInit {
           console.log(error)
         }
       );
-      // console.log("name==",this.name)
-    
-
   }
 
   isOrg(){
@@ -101,7 +96,6 @@ export class OrgprofileComponent implements OnInit {
         (res) => {
           console.log("Followedd")
           this.ngOnInit()
-          // this.router.navigate(['/profile/'+res.user._id]);
         }, (error) => {
           console.log(error)
         }
@@ -114,18 +108,11 @@ export class OrgprofileComponent implements OnInit {
       (res) => {
         console.log("removed")
         this.ngOnInit()
-       
-        // this.router.navigate(['/profile/'+res.user._id]);
       }, (error) => {
         console.log(error)
       }
       );
 }
-
- // Modal
- 
-
-
 
 
 myImage:String = "assets/images/location.png";  

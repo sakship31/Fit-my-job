@@ -14,7 +14,6 @@ export class AuthService {
   registerUser(data): Observable<any> {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      // 'Authorization': localStorage.getItem('id_token'),   
     });
     let options = { headers: headers };
     if(localStorage.getItem('isOrg')=="false"){
@@ -35,8 +34,7 @@ export class AuthService {
 
   authenticateUser(data): Observable<any> {
     let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      // 'Authorization': localStorage.getItem('id_token'),   
+      'Content-Type': 'application/json',  
     });
     let options = { headers: headers };
     if(localStorage.getItem('isOrg')=="false"){
@@ -100,7 +98,6 @@ export class AuthService {
       'Authorization': localStorage.getItem('id_token'),
     });
     let options = { headers: headers };
-    // console.log("data--",data._id,data.name)
     if(this.isOrg()){
       let url = 'http://localhost:3000/profile/org/'+data;
       return this.http.get(url, options)
@@ -124,7 +121,6 @@ export class AuthService {
       'Authorization': localStorage.getItem('id_token'),
     });
     let options = { headers: headers };
-    // console.log("data--",data._id,data.name)
     let url = 'http://localhost:3000/networkposts';
     return this.http.get(url, options)
       .pipe(
@@ -138,7 +134,6 @@ export class AuthService {
       'Authorization': localStorage.getItem('id_token'),
     });
     let options = { headers: headers };
-    // console.log("data--",data._id,data.name)
     let url = 'http://localhost:3000/like';
     return this.http.post(url,data,options)
       .pipe(
@@ -153,7 +148,6 @@ export class AuthService {
       'Authorization': localStorage.getItem('id_token'),
     });
     let options = { headers: headers };
-    // console.log("data--",data._id,data.name)
     let url = 'http://localhost:3000/unlike';
     return this.http.post(url,data,options)
       .pipe(
@@ -178,7 +172,6 @@ export class AuthService {
   storeUserData(token, user,isOrg) {
     localStorage.setItem('id_token', token);
     localStorage.setItem('user', JSON.stringify(user));
-    // localStorage.setItem('isOrg',(isOrg));
     this.authToken = token;
     this.user = user;
   }

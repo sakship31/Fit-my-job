@@ -5,8 +5,6 @@ const jwt=require('jsonwebtoken')
 const {ObjectId} = mongoose.Schema.Types
 const {JWT_SECRET}= require('../../config/keys')
 const Post =require('./post')
-// const moment = require('moment-timezone');
-// const dateIndia = moment.tz(Date.now(), "Asia/Calcutta");
 
 const userSchema=new mongoose.Schema({
     name:{
@@ -40,7 +38,6 @@ const userSchema=new mongoose.Schema({
     skills:[{
         skill:{
             name:{
-                // required:true,
                 type:String,
             },
             project_url:{
@@ -51,7 +48,6 @@ const userSchema=new mongoose.Schema({
     education:[{
         studies:{
             study:{
-                // required:true,
                 type:String,
             },
             uni_name:{
@@ -60,15 +56,12 @@ const userSchema=new mongoose.Schema({
         }
     }],
     about:{
-           // required:true,
         type:String
     },
     city:{
-        // required:true,
         type:String
     },
     state:{
-        // required:true,
         type:String
     },
 

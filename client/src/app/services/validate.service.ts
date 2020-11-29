@@ -24,7 +24,6 @@ export class ValidateService {
   });
   let options = { headers: headers };
   console.log("data:",data)
-  // console.log(data.image.get("image"))
   let url = 'http://localhost:3000/createpost/pic';
   return this.http.post(url, data, options)
     .pipe(
@@ -41,7 +40,6 @@ export class ValidateService {
     });
     let options = { headers: headers };
     console.log("data:",data)
-    // console.log(data.image.get("image"))
     if(isOrg()){
       let url = 'http://localhost:3000/jobdetail/org/'+data;
       return this.http.get(url, options)
@@ -67,7 +65,6 @@ export class ValidateService {
     let options = { headers: headers };
     console.log("data:",data)
     console.log("isOrg",isOrg())
-    // console.log(data.image.get("image"))
     if(!isOrg()){
       let url = 'http://localhost:3000/updatepic';
       return this.http.post(url, data, options)
@@ -93,7 +90,6 @@ export class ValidateService {
     });
     let options = { headers: headers };
     console.log("data:",data)
-    // console.log(data.image.get("image"))
     let url = 'http://localhost:3000/addSkill/'+JSON.parse(localStorage.getItem('user'))._id;
     return this.http.post(url, data, options)
       .pipe(
@@ -109,7 +105,6 @@ export class ValidateService {
       });
       let options = { headers: headers };
       console.log("data:",data)
-      // console.log(data.image.get("image"))
       let url = 'http://localhost:3000/addEd/'+JSON.parse(localStorage.getItem('user'))._id;
       return this.http.post(url, data, options)
         .pipe(
@@ -125,7 +120,6 @@ export class ValidateService {
           });
           let options = { headers: headers };
           console.log("data:",data)
-          // console.log(data.image.get("image"))
           let url = 'http://localhost:3000/job/delete';
           return this.http.post(url, data, options)
             .pipe(
@@ -142,7 +136,6 @@ export class ValidateService {
     });
     let options = { headers: headers };
     console.log("data:",data)
-    // console.log(data.image.get("image"))
     let url = 'http://localhost:3000/connect';
     return this.http.post(url, data, options)
       .pipe(
@@ -158,7 +151,6 @@ export class ValidateService {
       });
       let options = { headers: headers };
       console.log("data:",data)
-      // console.log(data.image.get("image"))
       let url = 'http://localhost:3000/remove';
       return this.http.post(url, data, options)
         .pipe(
@@ -174,7 +166,6 @@ export class ValidateService {
     });
     let options = { headers: headers };
     console.log("data:",data)
-    // console.log(data.image.get("image"))
     let url = 'http://localhost:3000/follow';
     return this.http.post(url, data, options)
       .pipe(
@@ -190,7 +181,6 @@ export class ValidateService {
         });
         let options = { headers: headers };
         console.log("data:",data)
-        // console.log(data.image.get("image"))
         let url = 'http://localhost:3000/unfollow';
         return this.http.post(url, data, options)
           .pipe(
@@ -206,7 +196,6 @@ export class ValidateService {
             });
             let options = { headers: headers };
             console.log("data:",data)
-            // console.log(data.image.get("image"))
             let url = 'http://localhost:3000/apply';
             return this.http.post(url, data, options)
               .pipe(
@@ -222,7 +211,6 @@ export class ValidateService {
       });
       let options = { headers: headers };
       console.log("data:",data)
-      // console.log(data.image.get("image"))
       let url = 'http://localhost:3000/updateprofile';
       return this.http.post(url, data, options)
         .pipe(
@@ -237,8 +225,6 @@ export class ValidateService {
         'Authorization': localStorage.getItem('id_token'),   
       });
       let options = { headers: headers };
-      // console.log("data:",data)
-      // console.log(data.image.get("image"))
       if(isOrg()){
         let url = 'http://localhost:3000/joblist';
         return this.http.get(url, options)

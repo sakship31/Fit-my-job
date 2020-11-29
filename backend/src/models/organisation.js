@@ -39,13 +39,11 @@ const orgSchema=new mongoose.Schema({
     followers:[{type:ObjectId,ref:"User"}],
     about:{
       type:String,
-      // required:true
     },
     website_link:{
       type:String,
     },
     location:{
-        // required:true,
         type:String
     },
 

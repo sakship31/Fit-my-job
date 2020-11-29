@@ -64,9 +64,7 @@ export class UpdatepicComponent implements OnInit {
           }
           this.validateService.updatePic(post,this.authService.isOrg).subscribe(
             (res) => {
-              console.log(res)
               // console.log(res)
-              // this.authService.storeUserData(res.token, res.user);
               if(localStorage.getItem('isOrg')=='true'){
                 this.router.navigate(['/profile/org/'+res._id]);
               }

@@ -68,7 +68,7 @@
          </button>
          <div class="skillcard" *ngFor="let skill of skills">
            <h1>Skill: {{skill.skill.name}}</h1> <br>
-           <p>Project url:{{skill.skill.project_url}}</p>
+           <p>Project url:<a href="{{skill.skill.project_url}}">{{skill.skill.project_url}}</a></p>
            
 
            
@@ -131,9 +131,9 @@
    <div class="modal-body" > 
        <form> 
          <div class="card">
-           <img src="{{profile}}" alt="Avatar" style="width:100%">
+           <img src="{{profile}}" alt="Avatar" style="width:40%; height:40%;margin-left: 30%; border-radius: 60%;">
            <div class="container">
-             <h4><b>{{name}}</b></h4>
+             <h4 style="text-align: center;"><b>{{name}}</b></h4>
              <form (submit)="onUpdatePic()">
                <div className="btn #64b5f6 blue darken-1">
                 <span>Upload Image</span>

@@ -40,17 +40,9 @@
 </body>
 
 
+<!-- modal -->
 
-
-
-
-
-
-
-
-
-
-<ng-template #content let-modal> 
+<ng-template #content let-modal > 
   <div class="modal-header"> 
       <h4 class="modal-title" 
           id="modal-basic-title"> 
@@ -58,39 +50,40 @@
       </h4> 
       <button type="button" class="close"
               aria-label="Close" (click)= 
-              "modal.dismiss('Cross click')"> 
-
+              "modal.dismiss('Cross click')">  
           <span aria-hidden="true"> 
               × 
           </span> 
       </button> 
   </div> 
-  <div class="modal-body"> 
+  <div class="modal-body" > 
       <form> 
         <div class="card">
-          <img src="{{profile}}" alt="Avatar" style="width:100%">
+          <img src="{{profile}}" alt="Avatar" style="width:40%; height:40%;margin-left: 30%; border-radius: 60%;">
           <div class="container">
-            <h4><b>{{name}}</b></h4>
+            <h4 style="text-align: center;"><b>{{name}}</b></h4>
             <form (submit)="onUpdatePic()">
               <div className="btn #64b5f6 blue darken-1">
                <span>Upload Image</span>
                <input type="file" (change)="onFileSelected($event)" class="form-control" name="image"/>
             </div>
-              
+            <input type="submit" class="btn btn-primary" value="Post">
             </form>
           </div>
         </div>
       </form> 
   </div> 
-  <div class="modal-footer"> 
+  <!-- <div class="modal-footer">  -->
       <!-- <button type="button" 
           class="btn btn-outline-dark" 
           (click)="modal.close('Save click')"> 
           Save 
       </button>  -->
-      <input type="submit" class="btn btn-primary" value="Post">
-  </div> 
+      
+  <!-- </div>  -->
 </ng-template> 
+
+
 
 <button class="btn btn-lg btn-outline-primary" 
   (click)="open(content)"> 

@@ -2,30 +2,22 @@ const express=require('express')
 const User=require('../models/user')
 const Org=require('../models/organisation')
 const login_required=require('../middleware/login_required')
-// const multer=require('multer')
-// const sharp=require('sharp')
-
 const app = new express.Router()
 
 
 app.post('/signup',(req,res)=>{
-    // console.log("body-",req.body)
     const user=new User(req.body)
-    // console.log("user=",user)
     if(!user.email || !user.password || !user.name || !user.city || !user.state || !user.about){
         return res.status(422).send({message:"Please add all the fields"})
      }
-
         User.findOne({email:user.email})
         .then(async (savedUser)=>{
             if(savedUser){
               return res.status(422).json({message:"User already exists with that email"})
-            }
-        // console.log("lol")    
+            }   
         await user.save()
         res.json({user})
     }).catch(error=>{
-        // console.log("error")
         res.status(400)
         res.send(error)
     })
@@ -48,9 +40,7 @@ app.post('/login',async(req,res)=>{
 })
 
 app.post('/signup/org',(req,res)=>{
-    // console.log("body-",req.body)
     const org=new Org(req.body)
-    // console.log("user=",user)
     if(!org.email || !org.password || !org.name){
         return res.status(422).send({message:"Please add all the fields"})
      }
@@ -60,18 +50,15 @@ app.post('/signup/org',(req,res)=>{
             if(savedUser){
               return res.status(422).json({message:"User already exists with that email"})
             }
-        // console.log("lol")    
         await org.save()
         res.json({org})
     }).catch(error=>{
-        // console.log("error")
         res.status(400)
         res.send(error)
     })
 })
 
 app.post('/login/org',async(req,res)=>{
-    console.log("re.body=",req.body)
     if(!req.body.email || !req.body.password){
         return res.status(422).json({error:"Please add all fields"})
      }
