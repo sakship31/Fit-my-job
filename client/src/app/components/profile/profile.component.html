@@ -14,7 +14,7 @@
       </div>
       <div class="profile-card__cnt js-profile-cnt">
          <div class="profile-card__name">{{name}}</div>
-         <div class="profile-card__txt">{{about}} <strong>{{city}}</strong></div>
+         <div class="profile-card__txt">{{about}} in <strong>{{city}}</strong></div>
          <div class="profile-card-loc">
             <span class="profile-card-loc__icon">
               <!-- <svg class="icon"><use xlink:href="#icon-location"></use></svg> -->
@@ -78,7 +78,7 @@
             Add education
          </button>
          <div class="educationcard" *ngFor="let edu of education">
-            <h1>Edu: {{edu.studies.study}}</h1><br>
+            <h1>Education: {{edu.studies.study}}</h1><br>
             <p>University name:{{edu.studies.uni_name}}</p> 
          </div>
 
@@ -87,7 +87,7 @@
 
    </div>
 
-   <div class="column2">
+   <div class="column2" *ngIf="!authService.isOrg()">
       <div class="card">
          <h1> People Also Viewed</h1>
 

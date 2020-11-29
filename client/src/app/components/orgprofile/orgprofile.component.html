@@ -1,3 +1,5 @@
+   
+<div class="main">
    <div class="row">
 
 
@@ -41,10 +43,12 @@
             </div>
             <div class="website">
                website:<a href="{{website_link}}" > {{website_link}}</a></div>
+
+               <button  class= "profile-card__button1 button--blue" style="margin-left: 30px;" (click)="onUpdateProfile()" *ngIf="self()">
+                  Update Profile
+               </button>
             </div>
-            <button  class= "profile-card__button1 button--blue" style="margin-left: 30px;" (click)="onUpdateProfile()" *ngIf="self()">
-               Update Profile
-            </button>
+            
             
             <br>
             <button class="skillcard" style="margin-left: 30px;" (click)="Follow()" *ngIf="(!self() && !authService.isOrg() && !followed())">
@@ -154,4 +158,4 @@
           
       <!-- </div>  -->
     </ng-template> 
-   
+   </div>      

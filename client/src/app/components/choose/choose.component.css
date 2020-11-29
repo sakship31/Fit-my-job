@@ -10,6 +10,15 @@
     background-color: #707070;
     opacity: 50%;
   }
+
+  .rectangle .text{
+    margin-top: 10px;
+    font-size: 25px;
+    text-align: center;
+    color: #000000;
+ }
+
+
   .imgBox{
     
     border-right: 10px;

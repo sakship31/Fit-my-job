@@ -35,7 +35,8 @@ body {
   
 }
 .card {
-    
+  width: 100%;
+  max-width: 1000px;
   background: #fff;
   border-radius: 12px;
      

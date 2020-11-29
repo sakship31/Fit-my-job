@@ -22,6 +22,11 @@ export class HomeComponent implements OnInit {
   toggle = true;
   posts=[]
   user
+  name
+  about
+  city
+  state
+  profile
   
 
   constructor(
@@ -38,6 +43,11 @@ export class HomeComponent implements OnInit {
         console.log(res)
         this.posts=res.posts
         this.user=res.user[0]
+        this.name = res.user[0].name
+        this.about = res.user[0].about
+        this.city = res.user[0].city
+        this.state = res.user[0].state
+        this.profile = res.user[0].profile
       }, (error) => {
         console.log(error)
       }
