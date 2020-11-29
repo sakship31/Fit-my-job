@@ -39,7 +39,9 @@
                
               
             </div>
-            
+            <div class="website">
+               website:<a href="{{website_link}}" > {{website_link}}</a></div>
+            </div>
             <button  class= "profile-card__button1 button--blue" style="margin-left: 30px;" (click)="onUpdateProfile()" *ngIf="self()">
                Update Profile
             </button>
@@ -51,9 +53,6 @@
             <button class="skillcard" style="margin-left: 30px;" (click)="Unfollow()" *ngIf="(!self() && !authService.isOrg() && followed())">
                UnFollow
             </button>
-            <div class="website">
-               website:<a href="{{website_link}}" > {{website_link}}</a></div>
-            </div>
             
          </div>
         </div>

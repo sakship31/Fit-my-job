@@ -29,6 +29,7 @@
 .column1 {
     float: left;
     margin-top:-40px ;
+    margin-left: -70px;
     padding: 0 10px 0 100px;
   }
 .column2 {

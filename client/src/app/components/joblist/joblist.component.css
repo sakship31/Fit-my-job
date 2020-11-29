@@ -5,7 +5,7 @@
 } */
 
 .form{
-   width: 95%;
+   width: 65%;
    height: 150px;
    padding: 20px;
    margin: 8% auto 0;
@@ -17,6 +17,8 @@
    
 }
 
+
+
 .content{
    letter-spacing: 0.2px;
    color: #8a8a8a;
@@ -24,6 +26,10 @@
 
 .info{
    color: black;
+}
+
+.right{
+   margin-left: 500px;
 }
 
 button{
@@ -38,18 +44,12 @@ button{
    cursor: pointer;
    outline: none;
    margin-top: 2px;
-   margin-left: 550px;
+   margin-left: 500px;
    /* align-content: center; */
 }
-/* .profile-card__button2{
-   color: black;
-   width: 100%;
-   padding: 10px;
-   border-radius: 20px;
-   font-size: 15px;
-   margin: 10px 0;
+
+.btn{
+   margin-top: -100px;
+   background-color: #1c8adb;
    border: none;
-   cursor: pointer;
-   outline: none;
-   margin-top: 6px;
-} */
+}

@@ -52,8 +52,8 @@
       <div class="card" style="border-radius:12px 12px 0 0"> 
         <div >
           <img style="padding:7px; width:50px;height:50px;border-radius:30px;float:left;"
-                 src="{{post.postedBy.pic}}"/></div><h5 style="padding-left:3px;padding-top:12px;font-size:20px"><a [routerLink]="['/profile/',getId(post)]">{{post.postedBy.name}}</a>
-           </h5></div>
+                 src="{{post.postedBy.pic}}"/><h5 style="padding-left:3px;padding-top:12px;font-size:20px"><a [routerLink]="['/profile/',getId(post)]">{{post.postedBy.name}}</a>
+           </h5></div></div>
  
           <div class="card-image">
               <img src="{{post.pic}}"/>
@@ -88,7 +88,7 @@
     <div class="column">
       <div class="card" >
         
-        <img [src]=dreamJob style="border-radius: 12px; width: 300px; height: 300px;" >
+        <a [routerLink]="['/jobs']"><img [src]=dreamJob style="border-radius: 12px; width: 300px; height: 300px;" ></a>
       </div>
     </div>
 

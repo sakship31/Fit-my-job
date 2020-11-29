@@ -1,27 +1,7 @@
-<!-- <p>joblist works!</p>
-<div *ngFor="let job of jobs">
-   <div>
-      <div >
-        <img style="padding:7px; width:50px;height:50px;border-radius:30px;float:left;"
-               src="{{job.postedBy.pic}}"/>
-            </div>
-            <h5 style="padding-left:3px;padding-top:12px;font-size:20px"><a [routerLink]="['/jobdetail',job._id]">{{job.job_title}}</a></h5>
-            <div style="padding-left:43px;padding-top:12px;font-size:15px">org name:{{job.postedBy.name}}</div>
-            <div style="padding-left:43px;padding-top:12px;font-size:15px">apply by:{{apply(job)}}</div>
-            <button class= "profile-card__button2 button--orange" style="margin-left: 30px;" (click)="deleteJob(job._id)" *ngIf="authService.isOrg()">
-              Delete Job 
-            </button>
-         </div>
-         <br>
-         <hr>
-</div> -->
-
-
-
 <!-- <p>joblist works!</p> -->
 <body class="form">
   
-   <div *ngFor="let job of jobs">
+   <div *ngFor="let job of jobs" >
       <div>
          <div >
            <img style="padding:7px; width:50px;height:50px;border-radius:30px;float:left;"
@@ -32,10 +12,12 @@
                   NAME :<span class="info"> {{job.postedBy.name}}</span></span></div>
                <div style="padding-left:43px;padding-top:12px;font-size:15px"><span class="content"><i class="fa fa-hourglass-end" aria-hidden="true"></i>
                   APPLY BY :<span class="info"> {{apply(job)}}</span></span></div>
-               <button class= "profile-card__button2 button--orange" style="margin-left: 30px;" (click)="deleteJob(job._id)" *ngIf="authService.isOrg()">
+               <aside class="right">
+                  <div class= "btn btn-danger"  (click)="deleteJob(job._id)" *ngIf="authService.isOrg()">
                   <i class="fa fa-trash" aria-hidden="true"></i>
    
-               </button>
+                  </div>
+            </aside>
               <!-- <button ><i class="fa fa-trash" aria-hidden="true"></i></button> -->
                 <!-- <div class="delete" (click)="deleteJob(job._id)" *ngIf="authService.isOrg()"><i class="fa fa-trash" aria-hidden="true"></div>
                  </div>  -->
